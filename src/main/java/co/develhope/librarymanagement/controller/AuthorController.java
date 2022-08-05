@@ -2,6 +2,8 @@ package co.develhope.librarymanagement.controller;
 
 
 import co.develhope.librarymanagement.entities.Author;
+import co.develhope.librarymanagement.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,6 +24,10 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
 
+    @Autowired
+    AuthorService authorService;
+
+
     // TODO Fetch all authors from the database
     @GetMapping("/getAllAuthors")
     public List<Author> getAllAuthors() {
@@ -37,7 +43,8 @@ public class AuthorController {
 
     @PostMapping("/insertNewAuthor")
     public void insertNewAuthor(@RequestBody Author newAuthor) {
-        // TODO Insert new Author
+        // TODO Respond with OK message and handle errors
+        authorService.insertNewAuthor(newAuthor);
     }
 
     /*
