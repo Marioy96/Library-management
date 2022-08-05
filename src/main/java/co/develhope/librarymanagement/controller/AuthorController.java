@@ -28,10 +28,10 @@ public class AuthorController {
     AuthorService authorService;
 
 
-    // TODO Fetch all authors from the database
+
     @GetMapping("/getAllAuthors")
     public List<Author> getAllAuthors() {
-        return new ArrayList<>();
+        return authorService.getAllAuthors();
     }
 
     // TODO Fetch author by id
