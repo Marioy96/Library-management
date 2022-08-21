@@ -18,6 +18,8 @@ import java.util.List;
  * * Delete
  */
 
+// TODO ricordatevi di cambiare i dati di accesso al database nell file properties altrimenti non funziona nulla!!
+
 // This annotation informs Spring Data JPA that this Class is a Controller for a REST API
 @RestController
 // "/authors" is the root for all the addresses in this API
