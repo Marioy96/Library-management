@@ -14,8 +14,10 @@ public class Customer {
     private String name;
     private String surname;
     private String telephoneNumber;
+    @Column(unique = true)
     private String email;
     private Boolean turnAvailability;
+    @Column(nullable = true)
     private LocalDate absences;
 
     public Customer(int id, String name, String surname, String telephoneNumber, String email, Boolean turnAvailability, LocalDate absences) {
