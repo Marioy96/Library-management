@@ -5,10 +5,7 @@ package co.develhope.librarymanagement.entities;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 // Entity e Table sono annotazioni che informano Spring Data JPA che questa classe corrisponde ad una tabella
@@ -18,15 +15,17 @@ import javax.persistence.Table;
 public class User {
 
     // Id è un'annotazione che informa Spring Data JPA che id è chiave primaria di questa entità
-    @Id
+
     // GeneratedValue chiede a Spring Data JPA di generare automaticamente un id crescente ogni volta che viene
     // inserito un nuovo utente nel DB
-    @GeneratedValue
+
     private String username;
     private String password;
     private String name;
     private String surname;
     private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     // Costruttore vuoto: obbligatorio per Spring Data JPA
