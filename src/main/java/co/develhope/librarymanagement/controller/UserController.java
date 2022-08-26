@@ -1,9 +1,6 @@
 package co.develhope.librarymanagement.controller;
 
-import co.develhope.librarymanagement.entities.Author;
-import co.develhope.librarymanagement.entities.Customer;
 import co.develhope.librarymanagement.entities.User;
-import co.develhope.librarymanagement.service.CustomerService;
 import co.develhope.librarymanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,25 +19,26 @@ public class UserController {
 
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
-        return UserService.findAllUser();
+        return userService.findAllUser();
     }
 
     @PostMapping("/InsertNewUser")
     public void insertNewUser(@RequestBody User user) {
-        UserService.addUser(user);
+       //TODO exception handling
+        userService.addNewUser(user);
+        //System.out.println(user.toString());
     }
 
 
     @PutMapping("/updateUser")
-    public void updateUser(@RequestBody User updatedUser) {
-        userService.
-
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
     }
 
 
     @DeleteMapping("/DeleteUser")
-    public void deleteUser(@RequestParam int id) {
-        userRepository.deleteAll();
+    public void deleteUser(){
+        userService.deleteAllUser();
     }
 
 }

@@ -26,8 +26,15 @@ public class CustomerService {
         customerRepository.deleteAll();
     }
 
-    public void updateCustomer(Customer customer){
-        customerRepository.save(customer);
+    public Customer updateCustomer(Customer customer) throws NullPointerException{
+        Customer updateCustomer = customerRepository.findById(customer.getId()).orElse(null);
+        try{
+            updateCustomer.setTelephoneNumber(customer.getTelephoneNumber());
+            updateCustomer.setEmail(customer.getEmail());
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+        }
+        return customerRepository.save(updateCustomer);
     }
 
 

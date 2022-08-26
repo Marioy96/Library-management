@@ -1,6 +1,5 @@
 package co.develhope.librarymanagement.service;
 
-import co.develhope.librarymanagement.entities.Customer;
 import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +11,30 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository
+    private UserRepository userRepository;
 
-    public static void addUser(User user){
-        userRepository
-
+    public void addNewUser(User user){
+        userRepository.save(user);
     }
 
-    public static List<User> findAllUser(){
-        return userRepository.findAll();
+    public List<User> findAllUser(){
+         return userRepository.findAll();
     }
 
     public void deleteAllUser(){
         userRepository.deleteAll();
     }
 
-    public static void updateUser(User user){
-        auserRepository.save(user);
+    public User updateUser(User user) throws NullPointerException{
+        User updateUser = userRepository.findById(user.getId()).orElse(null);
+        try{
+            updateUser.setUsername(user.getUsername());
+            updateUser.setPassword(user.getPassword());
+            updateUser.setEmail(user.getEmail());
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        return userRepository.save(user);
+
     }
-
-
 }
