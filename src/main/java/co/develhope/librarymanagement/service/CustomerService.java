@@ -5,7 +5,9 @@ import co.develhope.librarymanagement.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -20,6 +22,10 @@ public class CustomerService {
 
     public List<Customer> findAllCustomer(){
         return customerRepository.findAll();
+    }
+
+    public Optional<Customer> findById(Integer id){
+        return customerRepository.findById(id);
     }
 
     public void deleteAllCustomer(){

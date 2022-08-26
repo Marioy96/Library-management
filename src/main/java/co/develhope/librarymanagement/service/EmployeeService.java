@@ -25,7 +25,10 @@ public class EmployeeService {
     public void deleteAllEmployee(){employeeRepository.deleteAll();
     }
 
-    public void updateEmployee(Employee employee){employeeRepository.save(new Employee());
+    // Ho corretto il save, non va creata una nuova entità ma va aggiunta quella
+    //che passi come parametro al metodo
+    public void updateEmployee(Employee employee){
+        employeeRepository.save(employee);
     }
 
 
