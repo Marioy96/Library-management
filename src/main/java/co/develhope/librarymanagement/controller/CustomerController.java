@@ -3,8 +3,10 @@ package co.develhope.librarymanagement.controller;
 import co.develhope.librarymanagement.entities.Customer;
 import co.develhope.librarymanagement.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,20 +28,24 @@ public class CustomerController {
     }
 
     @PostMapping("/postCustomer")
-    public void insertNewCustomer(@RequestBody Customer customer){
-        //TODO Respond with OK message and handle errors
-        customerService.addCustomer(customer);
+    public Customer insertNewCustomer(@Validated @RequestBody Customer customer){
+        return customerService.addCustomer(customer);
     }
 
     @PutMapping("/updateCustomer")
-    public void updateCustomer(@RequestBody Customer customer){
-        customerService.updateCustomer(customer);
+    public Customer updateCustomer(@Validated @RequestBody Customer customer){
+       return customerService.updateCustomer(customer);
     }
 
     @DeleteMapping("/deleteAll")
     public void deleteAllCustomer(){
         customerService.deleteAllCustomer();
     }
+
+    public void deleteCustomerById(Integer id){
+        customerService.deleteCustomerById(id);
+    }
+
 
 
 }

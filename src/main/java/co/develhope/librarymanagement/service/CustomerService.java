@@ -5,7 +5,6 @@ import co.develhope.librarymanagement.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +15,9 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public void addCustomer(Customer customer){
+    public Customer addCustomer(Customer customer){
         customerRepository.save(customer);
+        return customer;
     }
 
     public List<Customer> findAllCustomer(){
@@ -31,6 +31,12 @@ public class CustomerService {
     public void deleteAllCustomer(){
         customerRepository.deleteAll();
     }
+
+    public void deleteCustomerById(Integer id){
+        customerRepository.deleteById(id);
+    }
+
+
 
     public Customer updateCustomer(Customer customer) throws NullPointerException{
       Customer updateCustomer = customerRepository.findById(customer.getId()).orElse(null);
