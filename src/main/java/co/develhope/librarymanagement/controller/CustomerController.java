@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
@@ -23,7 +21,7 @@ public class CustomerController {
     }
 
     @GetMapping("/getById")
-    public Optional<Customer> getById(@RequestParam Integer id){
+    public CustomerService getById(@RequestParam Integer id){
       return customerService.findById(id);
     }
 
