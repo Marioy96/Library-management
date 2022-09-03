@@ -1,0 +1,11 @@
+Spring:
+  datasource:
+    url:
+    username:
+    password:
+Jpa:
+  hibernate:
+  ddl-auto:
+h2:
+  console:
+  enabled:
