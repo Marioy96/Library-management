@@ -4,29 +4,32 @@ package co.develhope.librarymanagement.entities;
 // TODO Potremmo avere tanti tipi di pubblicazione: libri, riviste, carte geografiche, spartiti musicali
 // Sarebbe opportuno creare una superclasse "Product" con le opportune sottoclassi "Book", "Newspaper", ecc
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="books")
 public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String title;
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    @JsonIgnore
+    private Author author;
     private String plot;
     private int pages;
-    private float price;
+    private double price;
+    @Column(unique = true)
     private String ISBN;
 
     public Book() {
     }
 
-    public Book(int id, String title, String author, String plot, int pages, float price, String ISBN) {
+    public Book(int id, String title, Author author, String plot, int pages, double price, String ISBN) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -36,6 +39,12 @@ public class Book {
         this.ISBN = ISBN;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
     public int getId() {
         return id;
     }
@@ -50,14 +59,6 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getPlot() {
@@ -76,11 +77,11 @@ public class Book {
         this.pages = pages;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
