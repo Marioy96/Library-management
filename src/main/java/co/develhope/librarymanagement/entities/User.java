@@ -6,6 +6,8 @@ package co.develhope.librarymanagement.entities;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 // Entity e Table sono annotazioni che informano Spring Data JPA che questa classe corrisponde ad una tabella
@@ -15,30 +17,45 @@ import javax.persistence.*;
 public class User {
 
     // Id è un'annotazione che informa Spring Data JPA che id è chiave primaria di questa entità
-
     // GeneratedValue chiede a Spring Data JPA di generare automaticamente un id crescente ogni volta che viene
     // inserito un nuovo utente nel DB
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     private String username;
     private String password;
     private String name;
     private String surname;
+    @Column(unique = true, nullable = false)
     private String email;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(unique = true)
+    private String telephoneNumber;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Book> bookAcquired = new ArrayList<>();
+
 
     // Costruttore vuoto: obbligatorio per Spring Data JPA
     public User() {
     }
 
-    public User(String username, String password, String name, String surname, String email, int id) {
+    public User(String username, String password, String name, String surname, String email, String telephoneNumber, int id) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.telephoneNumber = telephoneNumber;
         this.id = id;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     public String getUsername() {

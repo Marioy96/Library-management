@@ -16,6 +16,7 @@ public class UserService {
     public void addNewUser(User user){
         userRepository.save(user);
     }
+    //TODO implementare il get degli utenti tramite id,tramite email e usarname;
 
     public List<User> findAllUser(){
          return userRepository.findAll();
@@ -24,6 +25,7 @@ public class UserService {
     public void deleteAllUser(){
         userRepository.deleteAll();
     }
+    //TODO
 
     public User updateUser(User user) throws NullPointerException{
         User updateUser = userRepository.findById(user.getId()).orElse(null);

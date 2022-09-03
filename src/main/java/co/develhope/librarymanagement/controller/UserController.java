@@ -3,6 +3,8 @@ package co.develhope.librarymanagement.controller;
 import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,10 +25,9 @@ public class UserController {
     }
 
     @PostMapping("/InsertNewUser")
-    public void insertNewUser(@RequestBody User user) {
-       //TODO exception handling
+    public ResponseEntity<User> insertNewUser(@RequestBody User user) {
         userService.addNewUser(user);
-        //System.out.println(user.toString());
+        return new ResponseEntity<User>(HttpStatus.OK);
     }
 
 
