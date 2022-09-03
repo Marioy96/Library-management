@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -14,8 +15,9 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public void addCustomer(Customer customer){
+    public Customer addCustomer(Customer customer){
         customerRepository.save(customer);
+        return customer;
     }
 
     public List<Customer> findAllCustomer(){
@@ -26,8 +28,13 @@ public class CustomerService {
         customerRepository.deleteAll();
     }
 
-    public void updateCustomer(Customer customer){
+    public Customer updateCustomer(Customer customer){
         customerRepository.save(customer);
+        return customer;
+    }
+
+
+    public void deleteCustomerById(Integer id) {
     }
 
 
