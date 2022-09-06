@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -32,12 +33,12 @@ public class CustomerService {
         return customer;
     }
 
-
     public void deleteCustomerById(Integer id) {
+        customerRepository.deleteById(id);
     }
 
+    public Optional<Customer> findById(Integer id) {
+        return customerRepository.findById(id);
 
-    public CustomerService findById(Integer id) {
-        return this;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -16,7 +17,10 @@ public class UserService {
     public void addNewUser(User user){
         userRepository.save(user);
     }
-    //TODO implementare il get degli utenti tramite id,tramite email e usarname;
+
+    public Optional<User> findUserById(Integer id){
+       return userRepository.findById(id);
+    }
 
     public List<User> findAllUser(){
          return userRepository.findAll();

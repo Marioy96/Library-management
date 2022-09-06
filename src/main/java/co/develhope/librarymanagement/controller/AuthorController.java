@@ -4,10 +4,12 @@ package co.develhope.librarymanagement.controller;
 import co.develhope.librarymanagement.entities.Author;
 import co.develhope.librarymanagement.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * AuthorController contains all the APIs necessary to interact with Author entity.
@@ -39,14 +41,14 @@ public class AuthorController {
     // TODO Fetch author by id
     // Get author by Id because we can have more authors with the same name
     @GetMapping("/getAuthorById")
-    public Author getAuthorById(@RequestParam int id) {
-        return new Author();
+    public Optional<Author> getAuthorById(@RequestParam int id) {
+        return authorService.findAuthorById(id);
     }
 
     @PostMapping("/insertNewAuthor")
-    public void insertNewAuthor(@RequestBody Author newAuthor) {
-        // TODO Respond with OK message and handle errors
+    public ResponseEntity<Author> insertNewAuthor(@RequestBody Author newAuthor) {
         authorService.insertNewAuthor(newAuthor);
+        return new ResponseEntity<Author>(newAuthor, HttpStatus.ACCEPTED);
     }
 
     /*
@@ -61,7 +63,12 @@ public class AuthorController {
 
     @DeleteMapping("/deleteAuthor")
     public void deleteAuthor(@RequestParam int id) {
-        // TODO Delete author from DB
+        authorService.deleteAuthorById(id);
+    }
+
+    @DeleteMapping("/deleteAllAuthor")
+    public void deleteAllAuthor(){
+        authorService.deleteAllAuthor();
     }
 
 

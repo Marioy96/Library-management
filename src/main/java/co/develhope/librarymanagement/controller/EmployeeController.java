@@ -3,6 +3,7 @@ package co.develhope.librarymanagement.controller;
 
 import co.develhope.librarymanagement.entities.Book;
 import co.develhope.librarymanagement.entities.Employee;
+import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,15 +29,19 @@ public class EmployeeController {
         return new ResponseEntity<Employee>(HttpStatus.OK);
     }
 
-    @PutMapping("/updateUser")
-    public void updateBook(@RequestBody Book book) {
-        employeeService.updateEmployee(new Employee());
+    @PutMapping("/updateEmployee")
+    public ResponseEntity<Employee>updateEmployee(@RequestBody Employee employee) {
+        employeeService.updateEmployee(employee);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+
     }
 
     @DeleteMapping("/deleteAll")
     public void deleteAllEmployee(){
         employeeService.deleteAllEmployee();
     }
+
+    //TODO IMPLEMENT GET BY ID , DELETE BY ID , GET BY EMPLOYEE CODE, DELETE BY EMPLOYEE CODE
 
 
 
