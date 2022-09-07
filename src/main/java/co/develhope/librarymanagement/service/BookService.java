@@ -3,9 +3,10 @@ package co.develhope.librarymanagement.service;
 import co.develhope.librarymanagement.entities.Book;
 import co.develhope.librarymanagement.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BookService {
 
     @Autowired
