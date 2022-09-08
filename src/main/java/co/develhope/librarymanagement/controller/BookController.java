@@ -44,13 +44,15 @@ public class BookController {
     }
 
     @PutMapping("/updateUser")
-    public void updateBook(@RequestBody Book book) {
+    public ResponseEntity<Book> updateBook(@RequestBody Book book) {
         bookService.updateBook(book);
+        return new ResponseEntity(book,HttpStatus.OK);
     }
 
     @DeleteMapping("/DeleteBook")
-    public void deleteAllBook(){
+    public ResponseEntity<Book> deleteAllBook(){
         bookService.deleteAllBook();
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 
