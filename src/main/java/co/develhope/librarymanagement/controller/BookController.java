@@ -25,8 +25,9 @@ public class BookController {
     private AuthorService authorService;
 
    @GetMapping("/getAllBook")
-    public List<Book> getAllBook(){
-        return bookService.findAllBook();
+    public ResponseEntity<List<Book>> getAllBook(){
+         bookService.findAllBook();
+         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/InsertNewBook")

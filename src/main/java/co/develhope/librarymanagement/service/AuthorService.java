@@ -1,7 +1,9 @@
 package co.develhope.librarymanagement.service;
 
 import co.develhope.librarymanagement.entities.Author;
+import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.repository.AuthorRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,19 @@ public class AuthorService {
 
     public void deleteAuthorById(Integer id){
         authorRepository.deleteById(id);
+    }
+
+    public void updateAuthor(@NotNull Author author){
+        Author updateAuthor = authorRepository.findById(author.getId()).orElse(null);
+        try{
+           updateAuthor.setDateOfBirth(author.getDateOfBirth());
+           updateAuthor.setName(author.getName());
+           updateAuthor.setSurname(author.getSurname());
+
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+         authorRepository.saveAndFlush(author);
     }
 
 

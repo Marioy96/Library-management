@@ -5,6 +5,7 @@ import co.develhope.librarymanagement.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 @Service
 public class BookService {
@@ -26,6 +27,10 @@ public class BookService {
 
     public void updateBook(Book book) {
         bookRepository.save(book);
+    }
+
+    public void deleteBookById(Integer id){
+        bookRepository.deleteById(id);
     }
 }
 

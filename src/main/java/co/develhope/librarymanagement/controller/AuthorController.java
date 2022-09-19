@@ -38,37 +38,36 @@ public class AuthorController {
         return authorService.getAllAuthors();
     }
 
-    // TODO Fetch author by id
-    // Get author by Id because we can have more authors with the same name
+
     @GetMapping("/getAuthorById")
-    public Optional<Author> getAuthorById(@RequestParam int id) {
-        return authorService.findAuthorById(id);
+    public ResponseEntity<Optional<Author>> getAuthorById(@RequestParam int id) {
+        authorService.findAuthorById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/insertNewAuthor")
     public ResponseEntity<Author> insertNewAuthor(@RequestBody Author newAuthor) {
         authorService.insertNewAuthor(newAuthor);
-        return new ResponseEntity<Author>(newAuthor, HttpStatus.ACCEPTED);
+        return new ResponseEntity<Author>(newAuthor, HttpStatus.OK);
     }
 
-    /*
-    Possibilità 1: una sola funzione di aggiornamento che prende in ingresso un autore completo e lo sovrascrive
-                    a quello precedente;
-    Possibilità 2: una funzione per ogni campo da modificare: "/updateAuthorName", "/updateAuthorSurname", ecc
-     */
     @PutMapping("/")
-    public void updateAuthor(@RequestBody Author updatedAuthor) {
-        // TODO Update author informations
+    public  ResponseEntity<Author> updateAuthor(@RequestBody Author updatedAuthor) {
+        authorService.updateAuthor(updatedAuthor);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
     @DeleteMapping("/deleteAuthor")
-    public void deleteAuthor(@RequestParam int id) {
+    public ResponseEntity <Author> deleteAuthor(@RequestParam int id) {
         authorService.deleteAuthorById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteAllAuthor")
-    public void deleteAllAuthor(){
+    public ResponseEntity<Author> deleteAllAuthor(){
         authorService.deleteAllAuthor();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
