@@ -54,7 +54,7 @@ public class AuthorController {
     @PutMapping("/")
     public  ResponseEntity<Author> updateAuthor(@RequestBody Author updatedAuthor) {
         authorService.updateAuthor(updatedAuthor);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<Author>(updatedAuthor,HttpStatus.OK);
 
     }
 

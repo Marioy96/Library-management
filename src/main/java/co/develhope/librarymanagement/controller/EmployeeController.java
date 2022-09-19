@@ -26,13 +26,13 @@ public class EmployeeController {
     @PostMapping("/InsertNewEmployee")
     public ResponseEntity<Employee> insertNewEmployee(@RequestBody Employee employee) {
         employeeService.insertNewEmployee(employee);
-        return new ResponseEntity<Employee>(HttpStatus.OK);
+        return new ResponseEntity<Employee>(employee,HttpStatus.OK);
     }
 
     @PutMapping("/updateEmployee")
     public ResponseEntity<Employee>updateEmployee(@RequestBody Employee employee) {
         employeeService.updateEmployee(employee);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<Employee>(employee,HttpStatus.ACCEPTED);
 
     }
 
