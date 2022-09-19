@@ -1,5 +1,6 @@
 package co.develhope.librarymanagement.controller;
 
+import co.develhope.librarymanagement.entities.Author;
 import co.develhope.librarymanagement.entities.Customer;
 import co.develhope.librarymanagement.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +36,20 @@ public class CustomerController {
     }
 
     @PutMapping("/updateCustomer")
-    public Customer updateCustomer(@RequestBody Customer customer){
-       return customerService.updateCustomer(customer);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+       customerService.updateCustomer(customer);
+       return new ResponseEntity<Customer>(customer,HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteAll")
-    public void deleteAllCustomer(){
+    public ResponseEntity <Customer>deleteAllCustomer(){
         customerService.deleteAllCustomer();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public void deleteCustomerById(Integer id){
+    public ResponseEntity<Customer> deleteCustomerById(Integer id){
         customerService.deleteCustomerById(id);
+        return new ResponseEntity<Customer>(HttpStatus.OK);
     }
 
 

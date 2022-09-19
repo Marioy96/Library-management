@@ -39,12 +39,7 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+
     public int getId() {
         return id;
     }
@@ -91,5 +86,14 @@ public class Book {
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
+    }
+
+
+
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }
