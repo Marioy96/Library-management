@@ -31,6 +31,22 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
+    public void getEmployeeById(Integer id){
+        employeeRepository.findById(id);
+    }
+
+    public void getEmployeeByCode(String code){
+        employeeRepository.findByEmployeeCode(code);
+    }
+
+    public void deleteEmployeeById(Integer id){
+        employeeRepository.deleteById(id);
+    }
+
+    public void deleteEmployeeByCode(String code){
+        employeeRepository.deleteByEmployeeCode(code);
+    }
+
 
 
 }

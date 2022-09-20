@@ -19,8 +19,21 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping("/getAllEmployee")
-    public List<Employee> getAllEmployee(){
-        return employeeService.getAllEmployee();
+    public ResponseEntity<List<Employee>> getAllEmployee(){
+        employeeService.getAllEmployee();
+        return new ResponseEntity <List<Employee>>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getEmployeeById")
+    public ResponseEntity<Employee> getEmployeeById(Integer id){
+        employeeService.getEmployeeById(id);
+        return new ResponseEntity<Employee>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getEmployeeByCode")
+    public ResponseEntity<Employee> getEmployeeByCode(String code){
+        employeeService.getEmployeeByCode(code);
+        return new ResponseEntity<Employee>(HttpStatus.OK);
     }
 
     @PostMapping("/InsertNewEmployee")
@@ -33,15 +46,27 @@ public class EmployeeController {
     public ResponseEntity<Employee>updateEmployee(@RequestBody Employee employee) {
         employeeService.updateEmployee(employee);
         return new ResponseEntity<Employee>(employee,HttpStatus.ACCEPTED);
-
     }
 
     @DeleteMapping("/deleteAll")
-    public void deleteAllEmployee(){
+    public ResponseEntity<Employee> deleteAllEmployee(){
         employeeService.deleteAllEmployee();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    //TODO IMPLEMENT GET BY ID , DELETE BY ID , GET BY EMPLOYEE CODE, DELETE BY EMPLOYEE CODE
+    @DeleteMapping("/deleteById")
+    public ResponseEntity<Employee> deleteById(Integer id){
+        employeeService.deleteEmployeeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteByCode")
+    public ResponseEntity<Employee> deleteByEmployeeCode(String code){
+        employeeService.deleteEmployeeByCode(code);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 

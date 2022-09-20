@@ -32,14 +32,16 @@ public class UserController {
 
 
     @PutMapping("/updateUser")
-    public void updateUser(@RequestBody User user) {
+    public ResponseEntity<User>updateUser(@RequestBody User user) {
         userService.updateUser(user);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
 
     @DeleteMapping("/DeleteUser")
-    public void deleteUser(){
+    public ResponseEntity<User>deleteUser(){
         userService.deleteAllUser();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
