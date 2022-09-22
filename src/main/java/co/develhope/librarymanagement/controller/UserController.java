@@ -2,6 +2,8 @@ package co.develhope.librarymanagement.controller;
 
 import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     @GetMapping("/getAllUsers")

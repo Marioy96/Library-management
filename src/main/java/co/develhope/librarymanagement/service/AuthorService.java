@@ -35,7 +35,7 @@ public class AuthorService {
         authorRepository.deleteById(id);
     }
 
-    public void updateAuthor(@NotNull Author author){
+    public void updateAuthor( @NotNull Author author){
         Author updateAuthor = authorRepository.findById(author.getId()).orElse(null);
         try{
            updateAuthor.setDateOfBirth(author.getDateOfBirth());

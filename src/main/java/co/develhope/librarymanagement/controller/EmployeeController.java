@@ -5,6 +5,8 @@ import co.develhope.librarymanagement.entities.Book;
 import co.develhope.librarymanagement.entities.Employee;
 import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    private static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @GetMapping("/getAllEmployee")
     public ResponseEntity<List<Employee>> getAllEmployee(){
