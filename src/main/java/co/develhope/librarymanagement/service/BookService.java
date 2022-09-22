@@ -2,6 +2,7 @@ package co.develhope.librarymanagement.service;
 
 import co.develhope.librarymanagement.entities.Book;
 import co.develhope.librarymanagement.repository.BookRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +18,25 @@ public class BookService {
         return bookRepository.findAll();}
 
 
-    public void insertNewBook(Book newBook) {
-        bookRepository.save(newBook);
+    public Book insertNewBook(Book newBook) {
+       return bookRepository.save(newBook);
     }
 
-    public void deleteAllBook() {
+    public String deleteAllBook() {
         bookRepository.deleteAll();
+        return "All book are deleted";
     }
 
-    public void updateBook(Book book) {
-        bookRepository.save(book);
+    public Book updateBook(Book book,Integer id) throws Exception {
+        if(!bookRepository.existsById(id)){
+            throw new Exception("Id doesn't exist");
+        }
+        return bookRepository.save(book);
     }
 
-    public void deleteBookById(Integer id){
+    public String deleteBookById(@NotNull Integer id){
         bookRepository.deleteById(id);
+        return String.format("Book whti id %d as delete",id);
     }
 }
 

@@ -6,6 +6,7 @@ import co.develhope.librarymanagement.entities.Book;
 
 import co.develhope.librarymanagement.service.AuthorService;
 import co.develhope.librarymanagement.service.BookService;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,35 +30,60 @@ public class BookController {
     private static Logger logger = LoggerFactory.getLogger(BookController.class);
 
    @GetMapping("/getAllBook")
-    public ResponseEntity<List<Book>> getAllBook(){
-         bookService.findAllBook();
-         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }
+    public ResponseEntity getAllBook(){
+        try {
+            logger.info("Getting all book");
+            return ResponseEntity.status(HttpStatus.OK).body(bookService.findAllBook());
+        } catch (Exception e) {
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+   }
 
     @PostMapping("/InsertNewBook")
-    public ResponseEntity<Book> insertNewBook(@RequestBody Book book,@RequestParam Integer id) {
+    public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) {
         Optional<Author> author = authorService.findAuthorById(id);
         if(author.isPresent()){
           book.setAuthor(author.get());
-            bookService.insertNewBook(book);
-            return new ResponseEntity<Book>(book,HttpStatus.ACCEPTED);
+            logger.info("Insert a new book");
+            return ResponseEntity.status(HttpStatus.OK).body(bookService.insertNewBook(book));
         }
         else {
-           return new ResponseEntity("Author id not found",HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-
     }
 
-    @PutMapping("/updateUser")
-    public ResponseEntity<Book> updateBook(@RequestBody Book book) {
-        bookService.updateBook(book);
-        return new ResponseEntity<Book>(book,HttpStatus.OK);
+    @PutMapping("/updateBook")
+    public @ResponseBody ResponseEntity updateBook(@RequestBody @NotNull Book book, @RequestParam Integer id) {
+       try{
+           logger.info("Update a book");
+           return ResponseEntity.status(HttpStatus.OK).body(bookService.updateBook(book, id));
+       } catch (Exception e) {
+           logger.error(e.toString());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
     }
 
-    @DeleteMapping("/DeleteBook")
-    public ResponseEntity<Book> deleteAllBook(){
-        bookService.deleteAllBook();
-        return new ResponseEntity(HttpStatus.OK);
+    @DeleteMapping("/deleteBook")
+    public ResponseEntity deleteAllBook(){
+     try {
+         logger.info("Delete all book");
+         return ResponseEntity.status(HttpStatus.OK).body(bookService.deleteAllBook());
+     } catch (Exception e) {
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+     }
+    }
+
+    @DeleteMapping("/deleteBookById")
+    public ResponseEntity deleteAuthorById(@RequestParam int id){
+       try {
+           logger.info("delete author by id");
+           return ResponseEntity.status(HttpStatus.OK).body(bookService.deleteBookById(id));
+       } catch (Exception e) {
+         logger.error(e.toString());
+         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
     }
 
 
