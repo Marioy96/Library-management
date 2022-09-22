@@ -17,7 +17,6 @@ public class Customer {
     @Column(unique = true)
     private String email;
     private Boolean turnAvailability;
-
     private LocalDate absences;
 
     public Customer(int id, String name, String surname, String telephoneNumber, String email, Boolean turnAvailability, LocalDate absences) {

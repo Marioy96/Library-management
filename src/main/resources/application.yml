@@ -1,0 +1,14 @@
+spring:
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
+    datasource:
+        url: jdbc:mysql://localhost:3306/bookdatabase
+        username: root
+        password: Mospwn13295X
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        database : mysql
+        show_sql : true
+        hibernate:
+            ddl-auto: create-drop

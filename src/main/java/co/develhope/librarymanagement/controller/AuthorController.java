@@ -3,6 +3,7 @@ package co.develhope.librarymanagement.controller;
 
 import co.develhope.librarymanagement.entities.Author;
 import co.develhope.librarymanagement.service.AuthorService;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
+@RestController
 @RequestMapping("/authors")
 public class AuthorController {
 
@@ -22,39 +21,72 @@ public class AuthorController {
     private static Logger logger = LoggerFactory.getLogger(AuthorController.class);
 
     @GetMapping("/getAllAuthors")
-    public List<Author> getAllAuthors() {
-        return authorService.getAllAuthors();
+    public ResponseEntity getAllAuthors() {
+        try {
+            logger.info("Getting all author");
+            return ResponseEntity.status(HttpStatus.OK).body(authorService.getAllAuthors());
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/getAuthorById")
-    public ResponseEntity<Optional<Author>> getAuthorById(@RequestParam int id) {
-        authorService.findAuthorById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity getAuthorById(@RequestParam int id) {
+        try {
+            logger.info("Getting author by Id");
+            return ResponseEntity.status(HttpStatus.OK).body(authorService.findAuthorById(id));
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
     }
 
     @PostMapping("/insertNewAuthor")
-    public ResponseEntity<Author> insertNewAuthor(@RequestBody Author newAuthor) {
-        authorService.insertNewAuthor(newAuthor);
-        return new ResponseEntity<Author>(newAuthor, HttpStatus.OK);
+    public @ResponseBody ResponseEntity insertNewAuthor(@RequestBody @NotNull Author newAuthor) {
+       try{
+           logger.info("Added a new Author");
+           return ResponseEntity.status(HttpStatus.OK).body(authorService.insertNewAuthor(newAuthor));
+       }catch (Exception e){
+           logger.error(e.toString());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
+
     }
 
-    @PutMapping("/")
-    public  ResponseEntity<Author> updateAuthor(@RequestBody Author updatedAuthor) {
-        authorService.updateAuthor(updatedAuthor);
-        return new ResponseEntity<Author>(updatedAuthor,HttpStatus.OK);
+    @PutMapping("/updateAuthor")
+    public @ResponseBody ResponseEntity updateAuthor(@RequestBody @NotNull Author updatedAuthor, @RequestParam Integer id) {
+      try{
+          logger.info("Update a Author");
+          return  ResponseEntity.status(HttpStatus.OK).body(authorService.updateAuthor(id,updatedAuthor));
+      } catch (Exception e) {
+          logger.error(e.toString());
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+      }
 
     }
 
-    @DeleteMapping("/deleteAuthor")
-    public ResponseEntity <Author> deleteAuthor(@RequestParam int id) {
-        authorService.deleteAuthorById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @DeleteMapping("/deleteAuthorById")
+    public ResponseEntity deleteAuthor(@RequestParam int id) {
+       try{
+           logger.info("Delete a author by id");
+           return ResponseEntity.status(HttpStatus.OK).body(authorService.deleteAuthorById(id));
+       }catch (Exception e){
+           logger.error(e.toString());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
     }
 
     @DeleteMapping("/deleteAllAuthor")
-    public ResponseEntity<Author> deleteAllAuthor(){
-        authorService.deleteAllAuthor();
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity deleteAllAuthor(){
+       try {
+           logger.info("Delete All author");
+           return ResponseEntity.status(HttpStatus.OK).body(authorService.deleteAllAuthor());
+       }catch (Exception e){
+           logger.error(e.toString());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
     }
 
 

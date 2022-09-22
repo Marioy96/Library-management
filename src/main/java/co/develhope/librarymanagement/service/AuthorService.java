@@ -1,7 +1,6 @@
 package co.develhope.librarymanagement.service;
 
 import co.develhope.librarymanagement.entities.Author;
-import co.develhope.librarymanagement.entities.User;
 import co.develhope.librarymanagement.repository.AuthorRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,32 +19,31 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public void insertNewAuthor(Author newAuthor) {
-        authorRepository.save(newAuthor);
+    public Author insertNewAuthor(Author newAuthor) {
+         if(newAuthor == null) return null;
+         return authorRepository.save(newAuthor);
     }
 
     public Optional<Author> findAuthorById(Integer id){
          return authorRepository.findById(id);
     }
-    public void deleteAllAuthor(){
+
+    public String deleteAllAuthor(){
         authorRepository.deleteAll();
+        return "All author as deleted";
     }
 
-    public void deleteAuthorById(Integer id){
+    public String deleteAuthorById(@NotNull Integer id){
         authorRepository.deleteById(id);
+        return String.format("Author whit id %d as deleted ", id);
+
     }
 
-    public void updateAuthor( @NotNull Author author){
-        Author updateAuthor = authorRepository.findById(author.getId()).orElse(null);
-        try{
-           updateAuthor.setDateOfBirth(author.getDateOfBirth());
-           updateAuthor.setName(author.getName());
-           updateAuthor.setSurname(author.getSurname());
-
-        }catch(NullPointerException e){
-            e.printStackTrace();
+    public Author updateAuthor(Integer id, @NotNull Author author) throws Exception {
+        if(!authorRepository.existsById(id)){
+            throw new Exception("Id doesn't exist");
         }
-         authorRepository.saveAndFlush(author);
+        return authorRepository.save(author);
     }
 
 
