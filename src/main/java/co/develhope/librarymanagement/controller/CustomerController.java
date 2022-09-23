@@ -3,6 +3,7 @@ package co.develhope.librarymanagement.controller;
 import co.develhope.librarymanagement.entities.Author;
 import co.develhope.librarymanagement.entities.Customer;
 import co.develhope.librarymanagement.service.CustomerService;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,36 +25,68 @@ public class CustomerController {
     private static Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @GetMapping("/getAllCustomer")
-    public List<Customer> getAllCustomer(){
-       return customerService.findAllCustomer();
+    public ResponseEntity getAllCustomer(){
+        try{
+            logger.info("Getting all customer");
+            return ResponseEntity.status(HttpStatus.OK).body(customerService.findAllCustomer());
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/getById")
-    public Optional<Customer> getById(@RequestParam Integer id){
-      return customerService.findById(id);
+    public ResponseEntity getById(@RequestParam Integer id){
+      try {
+          logger.info("Getting customer by Id");
+          return ResponseEntity.status(HttpStatus.OK).body(customerService.findById(id));
+      }catch (Exception e){
+          logger.error(e.toString());
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+      }
     }
 
     @PostMapping("/postCustomer")
-    public ResponseEntity<Customer> insertNewCustomer(@RequestBody Customer customer){
-         customerService.addCustomer(customer);
-         return new ResponseEntity<Customer>(customer, HttpStatus.ACCEPTED);
+    public @ResponseBody ResponseEntity insertNewCustomer(@RequestBody @NotNull Customer customer){
+        try{
+            logger.info("Added new customer");
+            return ResponseEntity.status(HttpStatus.OK).body(customerService.addCustomer(customer));
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PutMapping("/updateCustomer")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
-       customerService.updateCustomer(customer);
-       return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+    public ResponseEntity updateCustomer(@RequestBody Customer customer,@RequestParam Integer id){
+        try{
+            logger.info("Update a customer");
+            return  ResponseEntity.status(HttpStatus.OK).body(customerService.updateCustomer(customer,id));
+        } catch (Exception e) {
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/deleteAll")
-    public ResponseEntity <Customer>deleteAllCustomer(){
-        customerService.deleteAllCustomer();
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity deleteAllCustomer(){
+        try {
+            logger.info("Delete all customer");
+            return ResponseEntity.status(HttpStatus.OK).body(customerService.deleteAllCustomer());
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    public ResponseEntity<Customer> deleteCustomerById(Integer id){
-        customerService.deleteCustomerById(id);
-        return new ResponseEntity<Customer>(HttpStatus.OK);
+    public ResponseEntity  deleteCustomerById(Integer id){
+        try{
+            logger.info("Delete a customer by id");
+            return ResponseEntity.status(HttpStatus.OK).body(customerService.deleteCustomerById(id));
+        }catch (Exception e){
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 

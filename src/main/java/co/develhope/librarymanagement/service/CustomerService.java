@@ -16,25 +16,29 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public Customer addCustomer(Customer customer){
-        customerRepository.save(customer);
-        return customer;
+       if(customer == null) return null;
+       return customerRepository.save(customer);
     }
 
     public List<Customer> findAllCustomer(){
         return customerRepository.findAll();
     }
 
-    public void deleteAllCustomer(){
+    public String deleteAllCustomer(){
         customerRepository.deleteAll();
+        return "All author as deleted";
     }
 
-    public Customer updateCustomer(Customer customer){
-        customerRepository.save(customer);
-        return customer;
+    public Customer updateCustomer(Customer customer,Integer id) throws Exception {
+        if(!customerRepository.existsById(id)){
+            throw new Exception("id doesn't exist");
+        }
+        return customerRepository.save(customer);
     }
 
-    public void deleteCustomerById(Integer id) {
+    public String deleteCustomerById(Integer id) {
         customerRepository.deleteById(id);
+        return String.format("Customer whit id %d as deleted", id);
     }
 
     public Optional<Customer> findById(Integer id) {
