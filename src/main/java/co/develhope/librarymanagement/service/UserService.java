@@ -14,8 +14,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void addNewUser(User user){
-        userRepository.save(user);
+    public User addNewUser(User user){
+        if( user == null)return null;
+        return userRepository.save(user);
     }
 
     public Optional<User> findUserById(Integer id){
@@ -26,19 +27,20 @@ public class UserService {
          return userRepository.findAll();
     }
 
-    public void deleteAllUser(){
+    public  String deleteAllUser(){
         userRepository.deleteAll();
+        return "All user are deleted";
     }
-    //TODO
 
-    public User updateUser(User user) throws NullPointerException{
-        User updateUser = userRepository.findById(user.getId()).orElse(null);
-        try{
-            updateUser.setUsername(user.getUsername());
-            updateUser.setPassword(user.getPassword());
-            updateUser.setEmail(user.getEmail());
-        }catch(NullPointerException e){
-            e.printStackTrace();
+    public String deleteUserById(Integer id){
+        userRepository.deleteById(id);
+        return String.format("User whit id %d as deleted ", id);
+
+    }
+
+    public User updateUser(User user,Integer id) throws Exception{
+        if(!userRepository.existsById(id)){
+            throw new Exception("Id doesn't exist");
         }
         return userRepository.save(user);
 
