@@ -1,6 +1,7 @@
 package co.develhope.librarymanagement.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,8 +13,12 @@ public class Stocktaking {
     @Column(name = "id", nullable = false)
     private int id;
 
-   @ManyToMany(fetch = FetchType.LAZY)
+   @OneToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "book_id")
-    private Book fkBook;
+    private List<Book> listOfBooks;
+
+   private List<Employee> employee;
+   private List<Customer> customer;
+   private List<Invoice> invoice;
 
 }
