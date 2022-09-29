@@ -1,43 +1,56 @@
 package co.develhope.librarymanagement.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 // Entity e Table sono annotazioni che informano Spring Data JPA che questa classe corrisponde ad una tabella
 // nel database
 @Entity
 @Table(name="authors")
 public class Author {
-
-    // Id è un'annotazione che informa Spring Data JPA che id è chiave primaria di questa entità
     @Id
-    // GeneratedValue chiede a Spring Data JPA di generare automaticamente un id crescente ogni volta che viene
-    // inserito un nuovo autore nel DB
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
     private String name;
     private String surname;
     private LocalDate dateOfBirth;
 
-    // Costruttore vuoto: obbligatorio per Spring Data JPA
+    private Integer numberOfBookWrited;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "author_id")
+    private Set<Book> books = new LinkedHashSet<>();
+
+
     public Author() {
     }
 
-    public Author(int id, String name, String surname, LocalDate dateOfBirth) {
+    public Author(Integer id, String name, String surname, LocalDate dateOfBirth, Integer numberOfBookWrited, Set<Book> books) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
+        this.numberOfBookWrited = numberOfBookWrited;
+        this.books = books;
+    }
+
+    public Integer getNumberOfBookWrited() {
+        return numberOfBookWrited;
+    }
+
+    public void setNumberOfBookWrited(Integer numberOfBookWrited) {
+        this.numberOfBookWrited = numberOfBookWrited;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -63,5 +76,13 @@ public class Author {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }

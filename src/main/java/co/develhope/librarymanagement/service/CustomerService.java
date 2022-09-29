@@ -15,18 +15,31 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Customer addCustomer(Customer customer){
-       if(customer == null) return null;
-       return customerRepository.save(customer);
+    public Customer addCustomer(Customer customer) throws Exception {
+      try {
+          if (customer == null) return null;
+          customer.setId(null);
+          return customerRepository.save(customer);
+      }catch (Exception e){
+          throw new Exception("Incorrect input");
+      }
     }
 
-    public List<Customer> findAllCustomer(){
-        return customerRepository.findAll();
+    public List<Customer> findAllCustomer() throws Exception {
+        List<Customer> allCustomerFromDb = customerRepository.findAll();
+        if(allCustomerFromDb.isEmpty()){
+            throw new Exception("Not authors find");
+        }
+        return  allCustomerFromDb;
     }
 
-    public String deleteAllCustomer(){
-        customerRepository.deleteAll();
-        return "All author as deleted";
+    public String deleteAllCustomer() throws Exception{
+       try {
+           customerRepository.deleteAll();
+           return "All author as deleted";
+       }catch (Exception e){
+          throw new Exception("Can't delete all customer from db");
+       }
     }
 
     public Customer updateCustomer(Customer customer,Integer id) throws Exception {
@@ -36,13 +49,20 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public String deleteCustomerById(Integer id) {
-        customerRepository.deleteById(id);
-        return String.format("Customer whit id %d as deleted", id);
+    public String deleteCustomerById(Integer id) throws Exception {
+       try {
+           customerRepository.deleteById(id);
+           return String.format("Customer whit id %d as deleted", id);
+       }catch (Exception e){
+           throw new Exception("Customer id not found");
+       }
     }
 
-    public Optional<Customer> findById(Integer id) {
-        return customerRepository.findById(id);
-
+    public Optional<Customer> findById(Integer id) throws Exception {
+        try{
+            return customerRepository.findById(id);
+        }catch (Exception e){
+            throw new Exception("Customer id not found");
+        }
     }
 }

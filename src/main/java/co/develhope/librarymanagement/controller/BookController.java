@@ -41,7 +41,7 @@ public class BookController {
    }
 
     @PostMapping("/InsertNewBook")
-    public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) {
+    public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) throws Exception {
         Optional<Author> author = authorService.findAuthorById(id);
         if(author.isPresent()){
           book.setAuthor(author.get());

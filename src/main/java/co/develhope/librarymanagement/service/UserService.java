@@ -14,27 +14,48 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User addNewUser(User user){
-        if( user == null)return null;
-        return userRepository.save(user);
+    public User addNewUser(User user) throws Exception {
+       try {
+           if (user == null) return null;
+           user.setId(null);
+           return userRepository.save(user);
+       }catch (Exception e){
+           throw new Exception("Incorrect input");
+       }
     }
 
-    public Optional<User> findUserById(Integer id){
-       return userRepository.findById(id);
+    public Optional<User> findUserById(Integer id) throws Exception {
+       try {
+           return userRepository.findById(id);
+       }catch (Exception e){
+           throw new Exception ("Id not found");
+       }
     }
 
-    public List<User> findAllUser(){
-         return userRepository.findAll();
+    public List<User> findAllUser() throws Exception {
+         List<User> allUser = userRepository.findAll();
+         if(allUser.isEmpty()){
+             throw new Exception("Not users found");
+         }
+         return allUser;
     }
 
-    public  String deleteAllUser(){
-        userRepository.deleteAll();
-        return "All user are deleted";
+    public  String deleteAllUser() throws Exception {
+       try {
+           userRepository.deleteAll();
+           return "All user are deleted";
+       }catch (Exception e){
+           throw new Exception("Can't delete all user ");
+       }
     }
 
-    public String deleteUserById(Integer id){
-        userRepository.deleteById(id);
-        return String.format("User whit id %d as deleted ", id);
+    public String deleteUserById(Integer id) throws Exception {
+        try {
+            userRepository.deleteById(id);
+            return String.format("User whit id %d as deleted ", id);
+        }catch (Exception e){
+            throw new Exception("User id not foud");
+        }
 
     }
 

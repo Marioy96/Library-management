@@ -14,17 +14,34 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public List<Book> findAllBook() {
-        return bookRepository.findAll();}
-
-
-    public Book insertNewBook(Book newBook) {
-       return bookRepository.save(newBook);
+    public List<Book> findAllBook() throws Exception {
+        List<Book> allBooksFromDb = bookRepository.findAll();
+        if(allBooksFromDb.isEmpty()){
+            throw new Exception("Not books found");
+        }
+        return allBooksFromDb;
     }
 
-    public String deleteAllBook() {
-        bookRepository.deleteAll();
-        return "All book are deleted";
+
+
+    public Book insertNewBook(Book newBook) throws Exception {
+        try{
+            newBook.setId(null);
+            return bookRepository.save(newBook);
+        }catch (Exception e){
+            throw new Exception("Incorrect input ");
+        }
+
+    }
+
+    public String deleteAllBook() throws Exception {
+        try{
+            bookRepository.deleteAll();
+            return "All book are deleted";
+        }catch (Exception e){
+            throw new Exception("Can't delete all book from db");
+        }
+
     }
 
     public Book updateBook(Book book,Integer id) throws Exception {
@@ -34,9 +51,13 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public String deleteBookById(@NotNull Integer id){
-        bookRepository.deleteById(id);
-        return String.format("Book whti id %d as delete",id);
+    public String deleteBookById(@NotNull Integer id) throws Exception {
+       try {
+           bookRepository.deleteById(id);
+           return String.format("Book with id %d as delete", id);
+       }catch (Exception e){
+           throw new Exception("Book id not found");
+       }
     }
 }
 

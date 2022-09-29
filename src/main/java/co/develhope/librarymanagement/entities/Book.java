@@ -1,9 +1,5 @@
 package co.develhope.librarymanagement.entities;
 
-
-// TODO Potremmo avere tanti tipi di pubblicazione: libri, riviste, carte geografiche, spartiti musicali
-// Sarebbe opportuno creare una superclasse "Product" con le opportune sottoclassi "Book", "Newspaper", ecc
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -53,7 +49,7 @@ public class Book {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

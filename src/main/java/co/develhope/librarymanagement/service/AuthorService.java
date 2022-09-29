@@ -15,27 +15,51 @@ public class AuthorService {
     @Autowired
     AuthorRepository authorRepository;
 
-    public List<Author> getAllAuthors() {
-        return authorRepository.findAll();
+    public List<Author> getAllAuthors() throws Exception {
+        List<Author> allAuthorFromDb = authorRepository.findAll();
+        if(allAuthorFromDb.isEmpty()){
+            throw new Exception("Not authors found");
+        }
+        return allAuthorFromDb;
     }
 
-    public Author insertNewAuthor(Author newAuthor) {
-         if(newAuthor == null) return null;
-         return authorRepository.save(newAuthor);
+    public Author insertNewAuthor(Author newAuthor) throws Exception {
+         try{
+             if(newAuthor == null) return null;
+             newAuthor.setId(null);
+             return authorRepository.save(newAuthor);
+         }catch (Exception e){
+             throw new Exception("Incorrect input");
+         }
     }
 
-    public Optional<Author> findAuthorById(Integer id){
-         return authorRepository.findById(id);
+    public Optional<Author> findAuthorById(Integer id) throws Exception {
+        try {
+            return authorRepository.findById(id);
+        }catch (Exception e){
+            throw new Exception("Id not found");
+        }
+
     }
 
-    public String deleteAllAuthor(){
-        authorRepository.deleteAll();
-        return "All author as deleted";
+    public String deleteAllAuthor() throws Exception {
+        try {
+            authorRepository.deleteAll();
+            return "All author as deleted";
+        }catch (Exception e){
+            throw new Exception("Can't delete all Author from db");
+        }
+
     }
 
-    public String deleteAuthorById(@NotNull Integer id){
-        authorRepository.deleteById(id);
-        return String.format("Author whit id %d as deleted ", id);
+    public String deleteAuthorById(@NotNull Integer id) throws Exception {
+        try{
+            authorRepository.deleteById(id);
+            return String.format("Author whit id %d as deleted ", id);
+        }catch (Exception e){
+            throw new Exception("Authors id not found");
+        }
+
 
     }
 

@@ -1,5 +1,8 @@
 package co.develhope.librarymanagement.configuriation;
 
+import co.develhope.librarymanagement.controller.BookController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -17,6 +20,8 @@ import java.util.List;
 
 @Configuration
 public class SpringFoxConfig {
+
+    private static Logger logger = LoggerFactory.getLogger(SpringFoxConfig.class);
 
     @Bean
     public Docket api() {
@@ -52,14 +57,14 @@ public class SpringFoxConfig {
     }
 
     private SecurityContext securityContext() {
-        //logger.info("Private method 'securityContext' method called at "+ SpringFoxConfig.class +" at line#" + lineGetter);
+       // logger.info("Private method 'securityContext' method called at "+ SpringFoxConfig.class +" at line#" + lineGetter);
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
                 .build();
     }
 
     List<SecurityReference> defaultAuth() {
-        //logger.info("The method 'defaultAuth' method called at "+ SpringFoxConfig.class +" at line#" + lineGetter);
+       // logger.info("The method 'defaultAuth' method called at "+ SpringFoxConfig.class +" at line#" + lineGetter);
         AuthorizationScope authorizationScope
                 = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
