@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "Users")
 public class User {
 
+    @Column(unique = true)
     private String username;
     private String password;
     private String name;
@@ -25,7 +26,6 @@ public class User {
     private String telephoneNumber;
     @Column(unique = true)
     private String email;
-
 
 
     @Id
