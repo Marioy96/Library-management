@@ -18,7 +18,6 @@ public class Author {
     private String name;
     private String surname;
     private LocalDate dateOfBirth;
-
     private Integer numberOfBookWrited;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -40,6 +40,17 @@ public class BookController {
         }
    }
 
+   @GetMapping("/getBookById")
+   public ResponseEntity getBookById(@RequestParam Integer id){
+       try {
+           logger.info("Get book by id");
+           return ResponseEntity.status(HttpStatus.OK).body(bookService.findBookById(id));
+       } catch (Exception e) {
+           logger.error(e.toString());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
+   }
+
     @PostMapping("/InsertNewBook")
     public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) throws Exception {
         Optional<Author> author = authorService.findAuthorById(id);

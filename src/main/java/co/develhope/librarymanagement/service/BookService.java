@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BookService {
 
@@ -58,6 +60,14 @@ public class BookService {
        }catch (Exception e){
            throw new Exception("Book id not found");
        }
+    }
+
+    public Optional<Book> findBookById(Integer id) throws Exception{
+        try{
+            return bookRepository.findById(id);
+        }catch (Exception e){
+            throw new Exception("Id not found");
+        }
     }
 }
 
