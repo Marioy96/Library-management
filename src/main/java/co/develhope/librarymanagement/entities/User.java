@@ -2,6 +2,8 @@ package co.develhope.librarymanagement.entities;
 
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -11,23 +13,86 @@ public class User {
     private String password;
     private String name;
     private String surname;
+
+    private String dateOfBirth;
+
+    private String city;
+
+    @Column(unique = true)
+    private String fiscalCode;
+
+    @Column(unique = true)
+    private String telephoneNumber;
     @Column(unique = true)
     private String email;
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    private int id;
+    private Integer id;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private Set<Book> books = new LinkedHashSet<>();
+
+
 
     public User() {
     }
 
-    public User(String username, String password, String name, String surname, String email, int id) {
+    public User(String username, String password, String name, String surname, String dateOfBirth, String city, String fiscalCode, String telephoneNumber, String email, Integer id, Set<Book> books) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.city = city;
+        this.fiscalCode = fiscalCode;
+        this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.id = id;
+        this.books = books;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode(String fiscalCode) {
+        this.fiscalCode = fiscalCode;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getUsername() {
