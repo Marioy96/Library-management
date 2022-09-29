@@ -79,6 +79,7 @@ public class CustomerController {
         }
     }
 
+    @DeleteMapping("/deleteById")
     public ResponseEntity  deleteCustomerById(Integer id){
         try{
             logger.info("Delete a customer by id");

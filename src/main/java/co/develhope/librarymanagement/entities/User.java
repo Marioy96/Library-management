@@ -37,7 +37,6 @@ public class User {
     private Set<Book> books = new LinkedHashSet<>();
 
 
-
     public User() {
     }
 
