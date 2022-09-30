@@ -19,6 +19,11 @@ public class Employee {
     private String telephoneNumber;
     private LocalDate dateOfBirth;
     private LocalDate dateOfHiring;
+
+    @ManyToOne
+    @JoinColumn(name = "place_of_work_id")
+    private PlaceOfWork placeOfWork;
+
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String employeeCode;
