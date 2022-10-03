@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name="books")
@@ -26,6 +27,9 @@ public class Book {
     private LocalDate publicationDate;
     private String bookGenre;
     private boolean availability;
+
+    @OneToMany(mappedBy = "book")
+    private Set<Stocktaking> stocktakings;
 
 
     public Book() {
