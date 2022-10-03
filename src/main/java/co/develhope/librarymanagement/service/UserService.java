@@ -17,7 +17,6 @@ public class UserService {
     public User addNewUser(User user) throws Exception {
        try {
            if (user == null) return null;
-           user.setId(null);
            return userRepository.save(user);
        }catch (Exception e){
            throw new Exception("Incorrect input");

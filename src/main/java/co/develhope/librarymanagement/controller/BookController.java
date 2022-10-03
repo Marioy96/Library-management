@@ -24,8 +24,6 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Autowired
-    private AuthorService authorService;
 
     private static Logger logger = LoggerFactory.getLogger(BookController.class);
 
@@ -53,14 +51,12 @@ public class BookController {
 
     @PostMapping("/InsertNewBook")
     public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) throws Exception {
-        Optional<Author> author = authorService.findAuthorById(id);
-        if(author.isPresent()){
-          book.setAuthor(author.get());
-            logger.info("Insert a new book");
-            return ResponseEntity.status(HttpStatus.OK).body(bookService.insertNewBook(book));
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        try{
+            logger.info("Create a book");
+            return ResponseEntity.status(HttpStatus.OK).body(bookService.insertNewBook(book,id));
+        }catch (Exception e) {
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 

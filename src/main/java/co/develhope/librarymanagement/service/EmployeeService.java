@@ -26,7 +26,6 @@ public class EmployeeService {
     public Employee insertNewEmployee(Employee newEmployee) throws Exception {
        try {
            if (newEmployee == null) return null;
-           newEmployee.setId(null);
            return employeeRepository.save(newEmployee);
        }catch (Exception e){
            throw new Exception("Incorrect Input");

@@ -18,7 +18,6 @@ public class CustomerService {
     public Customer addCustomer(Customer customer) throws Exception {
       try {
           if (customer == null) return null;
-          customer.setId(null);
           return customerRepository.save(customer);
       }catch (Exception e){
           throw new Exception("Incorrect input");

@@ -2,15 +2,6 @@ package co.develhope.librarymanagement.entities;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +27,30 @@ public class Warehouse extends PlaceOfWork {
     private Set<Store> stores;
 
     public Warehouse(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Stocktaking> getStocktaking() {
+        return stocktaking;
+    }
+
+    public void setStocktaking(List<Stocktaking> stocktaking) {
+        this.stocktaking = stocktaking;
+    }
+
+    public Set<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(Set<Store> stores) {
+        this.stores = stores;
+    }
 }
 
 

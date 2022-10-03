@@ -1,5 +1,6 @@
 package co.develhope.librarymanagement.service;
 
+import co.develhope.librarymanagement.entities.Author;
 import co.develhope.librarymanagement.entities.Book;
 import co.develhope.librarymanagement.repository.BookRepository;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +15,10 @@ import java.util.Optional;
 public class BookService {
 
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
+
+    @Autowired
+    private AuthorService authorService;
 
     public List<Book> findAllBook() throws Exception {
         List<Book> allBooksFromDb = bookRepository.findAll();
@@ -26,10 +30,15 @@ public class BookService {
 
 
 
-    public Book insertNewBook(Book newBook) throws Exception {
+    public Book insertNewBook(Book newBook,Integer id) throws Exception {
         try{
-            newBook.setId(null);
-            return bookRepository.save(newBook);
+            Optional<Author> author = authorService.findAuthorById(id);
+            if(author.isPresent()){
+                newBook.setAuthor(author.get());
+                newBook.setId(null);
+                bookRepository.save(newBook);
+            }
+            return newBook;
         }catch (Exception e){
             throw new Exception("Incorrect input ");
         }

@@ -20,13 +20,22 @@ public class Employee {
     private LocalDate dateOfBirth;
     private LocalDate dateOfHiring;
 
-   /* @ManyToOne
-    @JoinColumn(name = "place_of_work_id")
-    private PlaceOfWork placeOfWork;*/
 
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String employeeCode;
+
+   /* @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "place_of_work_ID")
+    private PlaceOfWork placeOfWork;
+
+    public PlaceOfWork getPlaceOfWork() {
+        return placeOfWork;
+    }
+
+    public void setPlaceOfWork(PlaceOfWork placeOfWork) {
+        this.placeOfWork = placeOfWork;
+    }*/
 
     public Employee() {
     }
