@@ -1,12 +1,12 @@
 package co.develhope.librarymanagement.service;
 
-import co.develhope.librarymanagement.repository.InvoiceRepository;
+import co.develhope.librarymanagement.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InvoiceService {
+public class StoreService {
 
     @Autowired
-    private InvoiceRepository invoiceRepository;
+    private StoreRepository storeRepository;
 }

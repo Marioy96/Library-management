@@ -20,9 +20,9 @@ public class Employee {
     private LocalDate dateOfBirth;
     private LocalDate dateOfHiring;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "place_of_work_id")
-    private PlaceOfWork placeOfWork;
+    private PlaceOfWork placeOfWork;*/
 
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

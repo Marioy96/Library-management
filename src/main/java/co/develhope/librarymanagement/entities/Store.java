@@ -19,4 +19,6 @@ public class Store extends PlaceOfWork{
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
+    public Store(){}
+
 }

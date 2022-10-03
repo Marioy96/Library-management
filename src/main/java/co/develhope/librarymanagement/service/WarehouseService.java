@@ -1,11 +1,12 @@
 package co.develhope.librarymanagement.service;
 
-<<<<<<< HEAD
-
+import co.develhope.librarymanagement.repository.WarehouseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-=======
->>>>>>> stocktaking-carlo
 public class WarehouseService {
+
+    @Autowired
+    private WarehouseRepository warehouseRepository;
 }

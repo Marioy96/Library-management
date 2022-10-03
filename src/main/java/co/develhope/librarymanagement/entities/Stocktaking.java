@@ -35,8 +35,8 @@ public class Stocktaking {
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
-    // private List<Employee> employee;
-    // private List<Customer> customer;
-    // private List<Invoice> invoice;
+    public Stocktaking(){}
+
+
 
 }

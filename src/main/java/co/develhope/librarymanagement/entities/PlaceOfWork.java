@@ -14,14 +14,17 @@ import java.util.List;
 @MappedSuperclass
 public class PlaceOfWork {
 
+    /*
     @OneToMany(mappedBy = "placeOfWork")
-    private List<Employee> employeeList;
+    private List<Employee> employeeList;*/
 
     private String name;
     private String city;
     private String address;
     private LocalTime openingTime;
     private LocalTime closingTime;
+
+
 
 }
 
