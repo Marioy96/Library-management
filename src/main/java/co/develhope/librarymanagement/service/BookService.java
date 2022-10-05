@@ -16,7 +16,6 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
-
     @Autowired
     private AuthorService authorService;
 
@@ -28,19 +27,16 @@ public class BookService {
         return allBooksFromDb;
     }
 
-
-
     public Book insertNewBook(Book newBook,Integer id) throws Exception {
         try{
             Optional<Author> author = authorService.findAuthorById(id);
             if(author.isPresent()){
                 newBook.setAuthor(author.get());
-                newBook.setId(null);
                 bookRepository.save(newBook);
             }
             return newBook;
         }catch (Exception e){
-            throw new Exception("Incorrect input ");
+            throw new Exception("Incorrect input");
         }
 
     }

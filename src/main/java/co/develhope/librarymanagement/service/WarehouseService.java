@@ -1,18 +1,27 @@
 package co.develhope.librarymanagement.service;
 
+import co.develhope.librarymanagement.entities.Stocktaking;
+import co.develhope.librarymanagement.entities.Store;
 import co.develhope.librarymanagement.entities.Warehouse;
+import co.develhope.librarymanagement.repository.StocktakingRepository;
+import co.develhope.librarymanagement.repository.StoreRepository;
 import co.develhope.librarymanagement.repository.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class WarehouseService {
 
     @Autowired
     private WarehouseRepository warehouseRepository;
+
+    @Autowired
+    private StocktakingRepository stocktakingRepository;
+
+    @Autowired
+    private StoreRepository storeRepository;
 
     public Optional<Warehouse> getSingle(Integer id) throws Exception {
         try{
@@ -32,7 +41,7 @@ public class WarehouseService {
 
     public Warehouse create(Warehouse warehouse) throws Exception {
         try {
-            return warehouseRepository.save(warehouse);
+              return  warehouseRepository.save(warehouse);
         } catch (Exception e){
             throw new Exception("Incorrect input");
         }

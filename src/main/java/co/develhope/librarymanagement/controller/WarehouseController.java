@@ -1,6 +1,11 @@
 package co.develhope.librarymanagement.controller;
 
+
+import co.develhope.librarymanagement.entities.Stocktaking;
+import co.develhope.librarymanagement.entities.Store;
 import co.develhope.librarymanagement.entities.Warehouse;
+import co.develhope.librarymanagement.service.StocktakingService;
+import co.develhope.librarymanagement.service.StoreService;
 import co.develhope.librarymanagement.service.WarehouseService;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -10,12 +15,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @RestController
 @RequestMapping("/warehouse")
 public class WarehouseController {
 
     @Autowired
     private WarehouseService warehouseService;
+
+    @Autowired
+    private StoreService storeService;
+
+    @Autowired
+    private StocktakingService stocktakingService;
 
     private static Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 

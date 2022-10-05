@@ -36,7 +36,7 @@ public class SpringFoxConfig {
                         " tablet. Per questo motivo intendiamo iniziare con la realizzazione di un API in grado di interagire" +
                         " con il nostro database, a cui in seguito poter collegare un frontend web-based e le applicazioni mobile",
                         "1.0.0"," https://it.wikipedia.org/wiki/Licenza_MIT",//termsOfServiceUrl
-                        new Contact("Team 2 DevelHope","https://github.com/Marioy96/Library-management",""),//Contact
+                        new Contact("Team 2 Java 4 DevelHope","https://github.com/Marioy96/Library-management",""),//Contact
                         "MIT",//license
                         " https://it.wikipedia.org/wiki/Licenza_MIT",//licenseUrl
                         Collections.emptyList())).securityContexts(Arrays.asList(securityContext()))

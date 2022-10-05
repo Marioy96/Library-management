@@ -37,6 +37,42 @@ public class Stocktaking {
 
     public Stocktaking(){}
 
+    public Stocktaking(int id, int numberOfCopies, Book book, Warehouse warehouse) {
+        this.id = id;
+        this.numberOfCopies = numberOfCopies;
+        this.book = book;
+        this.warehouse = warehouse;
+    }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
+
+    public void setNumberOfCopies(int numberOfCopies) {
+        this.numberOfCopies = numberOfCopies;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
 }
