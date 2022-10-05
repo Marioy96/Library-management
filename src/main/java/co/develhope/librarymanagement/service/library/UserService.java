@@ -1,7 +1,7 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.library;
 
-import co.develhope.librarymanagement.entities.User;
-import co.develhope.librarymanagement.repository.UserRepository;
+import co.develhope.librarymanagement.entities.library.User;
+import co.develhope.librarymanagement.repository.library.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

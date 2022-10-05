@@ -1,7 +1,8 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.inventory;
+
+import co.develhope.librarymanagement.entities.library.Book;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Stocktaking è un entità che tiene traccia di quante copie di un preciso libro abbiamo presso un magazzino ben

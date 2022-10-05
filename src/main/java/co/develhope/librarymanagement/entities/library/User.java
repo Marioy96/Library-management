@@ -1,5 +1,7 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.library;
 
+
+import co.develhope.librarymanagement.entities.library.Book;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;

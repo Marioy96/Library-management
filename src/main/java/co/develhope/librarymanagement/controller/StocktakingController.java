@@ -1,8 +1,7 @@
 package co.develhope.librarymanagement.controller;
 
-import co.develhope.librarymanagement.entities.Stocktaking;
-import co.develhope.librarymanagement.service.StocktakingService;
-import net.bytebuddy.utility.dispatcher.JavaDispatcher;
+import co.develhope.librarymanagement.entities.inventory.Stocktaking;
+import co.develhope.librarymanagement.service.inventory.StocktakingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +62,7 @@ public class StocktakingController {
     public ResponseEntity deleteStockById(@PathVariable Integer id) {
         try{
             logger.info("Delete a stock by id");
-            return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.deleteBookById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.deleteSingleStock(id));
         }catch (Exception e){
             logger.error(e.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

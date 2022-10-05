@@ -1,5 +1,6 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.library;
 
+import co.develhope.librarymanagement.entities.inventory.Stocktaking;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

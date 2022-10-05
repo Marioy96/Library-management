@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.inventory;
 
 import javax.persistence.*;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "stores")
-public class Store extends PlaceOfWork{
+public class Store extends PlaceOfWork {
 
     @Id
     private Integer id;

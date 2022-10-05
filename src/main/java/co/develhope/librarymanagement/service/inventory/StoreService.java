@@ -1,10 +1,8 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.inventory;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
-import co.develhope.librarymanagement.entities.Store;
-import co.develhope.librarymanagement.entities.Warehouse;
-import co.develhope.librarymanagement.repository.StoreRepository;
-import io.swagger.models.auth.In;
+import co.develhope.librarymanagement.entities.inventory.Store;
+import co.develhope.librarymanagement.entities.inventory.Warehouse;
+import co.develhope.librarymanagement.repository.inventory.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

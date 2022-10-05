@@ -1,8 +1,8 @@
 package co.develhope.librarymanagement.controller;
 
 
-import co.develhope.librarymanagement.entities.Author;
-import co.develhope.librarymanagement.service.AuthorService;
+import co.develhope.librarymanagement.entities.library.Author;
+import co.develhope.librarymanagement.service.library.AuthorService;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

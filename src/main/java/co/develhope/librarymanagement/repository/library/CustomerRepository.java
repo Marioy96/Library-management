@@ -1,6 +1,6 @@
-package co.develhope.librarymanagement.repository;
+package co.develhope.librarymanagement.repository.library;
 
-import co.develhope.librarymanagement.entities.Customer;
+import co.develhope.librarymanagement.entities.library.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

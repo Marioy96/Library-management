@@ -1,10 +1,9 @@
-package co.develhope.librarymanagement.repository;
+package co.develhope.librarymanagement.repository.inventory;
 
-import co.develhope.librarymanagement.entities.Employee;
+import co.develhope.librarymanagement.entities.inventory.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

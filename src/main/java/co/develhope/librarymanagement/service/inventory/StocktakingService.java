@@ -1,10 +1,10 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.inventory;
 
-import co.develhope.librarymanagement.entities.Book;
-import co.develhope.librarymanagement.entities.Stocktaking;
-import co.develhope.librarymanagement.entities.Warehouse;
-import co.develhope.librarymanagement.repository.StocktakingRepository;
-import org.jetbrains.annotations.NotNull;
+import co.develhope.librarymanagement.entities.library.Book;
+import co.develhope.librarymanagement.entities.inventory.Stocktaking;
+import co.develhope.librarymanagement.entities.inventory.Warehouse;
+import co.develhope.librarymanagement.repository.inventory.StocktakingRepository;
+import co.develhope.librarymanagement.service.library.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class StocktakingService {
     @Autowired
     private BookService bookService;
     @Autowired
-    private  WarehouseService warehouseService;
+    private WarehouseService warehouseService;
 
     public Stocktaking createStock(Stocktaking stocktaking,Integer bookId,Integer warehouseId) throws Exception {
         try {
@@ -69,7 +69,7 @@ public class StocktakingService {
 
     }
 
-    public String deleteBookById(Integer id) throws Exception {
+    public String deleteSingleStock(Integer id) throws Exception {
         try {
             stocktakingRepository.deleteById(id);
             return String.format("Stocktaking with id %d as delete", id);
@@ -77,5 +77,6 @@ public class StocktakingService {
             throw new Exception("Stocktaking id not found");
         }
     }
+
 
 }

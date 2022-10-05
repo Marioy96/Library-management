@@ -1,7 +1,7 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.inventory;
 
-import co.develhope.librarymanagement.entities.Employee;
-import co.develhope.librarymanagement.repository.EmployeeRepository;
+import co.develhope.librarymanagement.entities.inventory.Employee;
+import co.develhope.librarymanagement.repository.inventory.EmployeeRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

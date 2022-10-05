@@ -1,11 +1,9 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.inventory;
 
-import co.develhope.librarymanagement.entities.Stocktaking;
-import co.develhope.librarymanagement.entities.Store;
-import co.develhope.librarymanagement.entities.Warehouse;
-import co.develhope.librarymanagement.repository.StocktakingRepository;
-import co.develhope.librarymanagement.repository.StoreRepository;
-import co.develhope.librarymanagement.repository.WarehouseRepository;
+import co.develhope.librarymanagement.entities.inventory.Warehouse;
+import co.develhope.librarymanagement.repository.inventory.StocktakingRepository;
+import co.develhope.librarymanagement.repository.inventory.StoreRepository;
+import co.develhope.librarymanagement.repository.inventory.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

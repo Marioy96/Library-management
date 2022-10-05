@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.inventory;
 
 import javax.persistence.*;
 import java.time.LocalDate;

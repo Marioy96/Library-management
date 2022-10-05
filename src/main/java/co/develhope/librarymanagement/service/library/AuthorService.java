@@ -1,7 +1,7 @@
-package co.develhope.librarymanagement.service;
+package co.develhope.librarymanagement.service.library;
 
-import co.develhope.librarymanagement.entities.Author;
-import co.develhope.librarymanagement.repository.AuthorRepository;
+import co.develhope.librarymanagement.entities.library.Author;
+import co.develhope.librarymanagement.repository.library.AuthorRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

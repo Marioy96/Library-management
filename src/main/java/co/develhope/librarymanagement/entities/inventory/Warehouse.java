@@ -1,5 +1,9 @@
-package co.develhope.librarymanagement.entities;
+package co.develhope.librarymanagement.entities.inventory;
 
+
+import co.develhope.librarymanagement.entities.inventory.PlaceOfWork;
+import co.develhope.librarymanagement.entities.inventory.Stocktaking;
+import co.develhope.librarymanagement.entities.inventory.Store;
 
 import javax.persistence.*;
 import java.util.List;

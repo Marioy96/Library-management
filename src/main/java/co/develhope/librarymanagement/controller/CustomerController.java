@@ -1,19 +1,14 @@
 package co.develhope.librarymanagement.controller;
 
-import co.develhope.librarymanagement.entities.Author;
-import co.develhope.librarymanagement.entities.Customer;
-import co.develhope.librarymanagement.service.CustomerService;
+import co.develhope.librarymanagement.entities.library.Customer;
+import co.develhope.librarymanagement.service.library.CustomerService;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
