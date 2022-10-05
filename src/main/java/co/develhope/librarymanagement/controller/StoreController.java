@@ -77,7 +77,7 @@ public class StoreController {
     public ResponseEntity deleteById(@PathVariable Integer id){
         try {
             logger.info("Deleting Store by Id");
-            return ResponseEntity.status(HttpStatus.OK).body(deleteById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(storeService.deleteSingle(id));
         }catch (Exception e){
             logger.error(e.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

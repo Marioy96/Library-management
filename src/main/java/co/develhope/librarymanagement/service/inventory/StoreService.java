@@ -50,7 +50,7 @@ public class StoreService {
         try{
              return storeRepository.findById(storeId);
         }catch (Exception e){
-            throw new Exception("Book id not found");
+            throw new Exception("Store id not found");
         }
     }
 
