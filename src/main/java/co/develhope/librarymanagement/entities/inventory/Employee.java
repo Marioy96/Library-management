@@ -11,7 +11,7 @@ public class Employee {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     private String name;
     private String surname;
@@ -40,7 +40,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String name, String surname, String address, String telephoneNumber, LocalDate dateOfBirth, LocalDate dateOfHiring, String employeeCode) {
+    public Employee(Integer id, String name, String surname, String address, String telephoneNumber, LocalDate dateOfBirth, LocalDate dateOfHiring, String employeeCode) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -107,10 +107,10 @@ public class Employee {
         this.employeeCode = employeeCode;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

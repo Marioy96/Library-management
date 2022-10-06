@@ -56,6 +56,7 @@ public class StocktakingService {
         if(!stocktakingRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        stocktaking.setId(id);
         return stocktakingRepository.save(stocktaking);
     }
 

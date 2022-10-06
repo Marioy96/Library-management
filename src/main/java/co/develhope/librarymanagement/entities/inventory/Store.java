@@ -1,5 +1,7 @@
 package co.develhope.librarymanagement.entities.inventory;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import javax.persistence.*;
 
 /**
@@ -13,6 +15,8 @@ import javax.persistence.*;
 public class Store extends PlaceOfWork {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "warehouse_id")

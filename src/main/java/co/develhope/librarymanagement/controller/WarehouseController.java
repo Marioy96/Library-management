@@ -38,8 +38,8 @@ public class WarehouseController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-    @PutMapping("/updateWarehouse")
-    public ResponseEntity updateWarehouse(@RequestBody @NotNull Warehouse warehouse, @RequestParam Integer id){
+    @PutMapping("/updateWarehouse/{id}")
+    public ResponseEntity updateWarehouse(@RequestBody @NotNull Warehouse warehouse, @PathVariable Integer id){
         try{
             logger.info("Update a warehouse");
             return ResponseEntity.status(HttpStatus.OK).body(warehouseService.update(id, warehouse));

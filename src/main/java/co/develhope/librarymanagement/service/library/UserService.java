@@ -62,6 +62,7 @@ public class UserService {
         if(!userRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        user.setId(id);
         return userRepository.save(user);
 
     }

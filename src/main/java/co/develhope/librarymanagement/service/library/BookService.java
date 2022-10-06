@@ -56,6 +56,7 @@ public class BookService {
         if(!bookRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        book.setId(id);
         return bookRepository.save(book);
     }
 

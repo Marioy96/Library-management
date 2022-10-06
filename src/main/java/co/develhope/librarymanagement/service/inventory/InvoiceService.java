@@ -51,6 +51,7 @@ public class InvoiceService {
         if(!invoiceRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        invoice.setId(id);
         return invoiceRepository.save(invoice);
     }
 

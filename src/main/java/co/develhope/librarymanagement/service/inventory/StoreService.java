@@ -35,6 +35,7 @@ public class StoreService {
         if(!storeRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        store.setId(id);
         return storeRepository.save(store);
     }
 

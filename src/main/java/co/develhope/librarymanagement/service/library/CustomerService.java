@@ -45,6 +45,7 @@ public class CustomerService {
         if(!customerRepository.existsById(id)){
             throw new Exception("id doesn't exist");
         }
+        customer.setId(id);
         return customerRepository.save(customer);
     }
 

@@ -26,7 +26,6 @@ public class AuthorService {
     public Author insertNewAuthor(Author newAuthor) throws Exception {
          try{
              if(newAuthor == null) return null;
-             newAuthor.setId(null);
              return authorRepository.save(newAuthor);
          }catch (Exception e){
              throw new Exception("Incorrect input");
@@ -67,6 +66,7 @@ public class AuthorService {
         if(!authorRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        author.setId(id);
         return authorRepository.save(author);
     }
 

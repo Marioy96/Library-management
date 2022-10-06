@@ -43,13 +43,13 @@ public class WarehouseService {
         } catch (Exception e){
             throw new Exception("Incorrect input");
         }
-
     }
 
     public Warehouse update(Integer id, Warehouse warehouse) throws Exception {
         if(!warehouseRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
+        warehouse.setId(id);
         return warehouseRepository.save(warehouse);
     }
 
@@ -68,13 +68,8 @@ public class WarehouseService {
             return "All warehouse are deleted";
         }catch (Exception e){
         throw new Exception("Can't delete all werehouse from db");
+        }
     }
-    }
-
-
-
-
-
 
 
 
