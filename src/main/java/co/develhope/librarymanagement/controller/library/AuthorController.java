@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.library;
 
 
 import co.develhope.librarymanagement.entities.library.Author;
@@ -32,7 +32,7 @@ public class AuthorController {
     }
 
     @GetMapping("/getAuthorById")
-    public ResponseEntity getAuthorById(@RequestParam int id) {
+    public ResponseEntity getAuthorById(@RequestParam Long id) {
         try {
             logger.info("Getting author by Id");
             return ResponseEntity.status(HttpStatus.OK).body(authorService.findAuthorById(id));
@@ -56,7 +56,7 @@ public class AuthorController {
     }
 
     @PutMapping("/updateAuthor")
-    public @ResponseBody ResponseEntity updateAuthor(@RequestBody @NotNull Author updatedAuthor, @RequestParam Integer id) {
+    public @ResponseBody ResponseEntity updateAuthor(@RequestBody @NotNull Author updatedAuthor, @RequestParam Long id) {
       try{
           logger.info("Update a Author");
           return  ResponseEntity.status(HttpStatus.OK).body(authorService.updateAuthor(id,updatedAuthor));
@@ -68,7 +68,7 @@ public class AuthorController {
     }
 
     @DeleteMapping("/deleteAuthorById")
-    public ResponseEntity deleteAuthor(@RequestParam int id) {
+    public ResponseEntity deleteAuthor(@RequestParam Long id) {
        try{
            logger.info("Delete a author by id");
            return ResponseEntity.status(HttpStatus.OK).body(authorService.deleteAuthorById(id));

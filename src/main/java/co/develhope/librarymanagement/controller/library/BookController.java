@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.library;
 
 import co.develhope.librarymanagement.entities.library.Book;
 
@@ -34,7 +34,7 @@ public class BookController {
    }
 
    @GetMapping("/getBookById")
-   public ResponseEntity getBookById(@RequestParam Integer id){
+   public ResponseEntity getBookById(@RequestParam Long id){
        try {
            logger.info("Get book by id");
            return ResponseEntity.status(HttpStatus.OK).body(bookService.findBookById(id));
@@ -45,7 +45,7 @@ public class BookController {
    }
 
     @PostMapping("/InsertNewBook")
-    public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Integer id) throws Exception {
+    public @ResponseBody ResponseEntity insertNewBook(@RequestBody @NotNull Book book, @RequestParam Long id) throws Exception {
         try{
             logger.info("Create a book");
             return ResponseEntity.status(HttpStatus.OK).body(bookService.insertNewBook(book,id));
@@ -56,7 +56,7 @@ public class BookController {
     }
 
     @PutMapping("/updateBook")
-    public @ResponseBody ResponseEntity updateBook(@RequestBody @NotNull Book book, @RequestParam Integer id) {
+    public @ResponseBody ResponseEntity updateBook(@RequestBody @NotNull Book book, @RequestParam Long id) {
        try{
            logger.info("Update a book");
            return ResponseEntity.status(HttpStatus.OK).body(bookService.updateBook(book, id));
@@ -78,7 +78,7 @@ public class BookController {
     }
 
     @DeleteMapping("/deleteBookById")
-    public ResponseEntity deleteAuthorById(@RequestParam int id){
+    public ResponseEntity deleteAuthorById(@RequestParam Long id){
        try {
            logger.info("delete author by id");
            return ResponseEntity.status(HttpStatus.OK).body(bookService.deleteBookById(id));

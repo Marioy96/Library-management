@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.inventory;
 
 
 import co.develhope.librarymanagement.entities.inventory.Warehouse;
@@ -39,7 +39,7 @@ public class WarehouseController {
         }
     }
     @PutMapping("/updateWarehouse/{id}")
-    public ResponseEntity updateWarehouse(@RequestBody @NotNull Warehouse warehouse, @PathVariable Integer id){
+    public ResponseEntity updateWarehouse(@RequestBody @NotNull Warehouse warehouse, @PathVariable Long id){
         try{
             logger.info("Update a warehouse");
             return ResponseEntity.status(HttpStatus.OK).body(warehouseService.update(id, warehouse));
@@ -59,7 +59,7 @@ public class WarehouseController {
         }
     }
     @GetMapping("/getById")
-    public ResponseEntity getWarehouseById(@RequestParam Integer id){
+    public ResponseEntity getWarehouseById(@RequestParam Long id){
         try {
             logger.info("Find warehouse by id");
             return ResponseEntity.status(HttpStatus.OK).body(warehouseService.getSingle(id));
@@ -79,7 +79,7 @@ public class WarehouseController {
         }
     }
     @DeleteMapping("/deleteById")
-    public ResponseEntity deleteWareHouseById(@RequestParam Integer id){
+    public ResponseEntity deleteWareHouseById(@RequestParam Long id){
         try {
             logger.info("Delete warehouse by Id");
             return ResponseEntity.status(HttpStatus.OK).body(warehouseService.deleteSingle(id));

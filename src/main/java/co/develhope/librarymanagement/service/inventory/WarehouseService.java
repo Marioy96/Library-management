@@ -21,10 +21,11 @@ public class WarehouseService {
     @Autowired
     private StoreRepository storeRepository;
 
-    public Optional<Warehouse> getSingle(Integer id) throws Exception {
+    public Optional<Warehouse> getSingle(Long id) throws Exception {
         try{
            return warehouseRepository.findById(id);
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Id not found");
         }
     }
@@ -45,7 +46,7 @@ public class WarehouseService {
         }
     }
 
-    public Warehouse update(Integer id, Warehouse warehouse) throws Exception {
+    public Warehouse update(Long id, Warehouse warehouse) throws Exception {
         if(!warehouseRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
@@ -53,7 +54,7 @@ public class WarehouseService {
         return warehouseRepository.save(warehouse);
     }
 
-    public String deleteSingle(Integer id) throws Exception {
+    public String deleteSingle(Long id) throws Exception {
         try {
             warehouseRepository.deleteById(id);
             return String.format("Warehouse with id %d as delete", id);

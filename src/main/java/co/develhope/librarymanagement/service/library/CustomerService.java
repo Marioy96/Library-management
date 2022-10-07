@@ -41,7 +41,7 @@ public class CustomerService {
        }
     }
 
-    public Customer updateCustomer(Customer customer,Integer id) throws Exception {
+    public Customer updateCustomer(Customer customer,Long id) throws Exception {
         if(!customerRepository.existsById(id)){
             throw new Exception("id doesn't exist");
         }
@@ -49,7 +49,7 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public String deleteCustomerById(Integer id) throws Exception {
+    public String deleteCustomerById(Long id) throws Exception {
        try {
            customerRepository.deleteById(id);
            return String.format("Customer whit id %d as deleted", id);
@@ -58,7 +58,7 @@ public class CustomerService {
        }
     }
 
-    public Optional<Customer> findById(Integer id) throws Exception {
+    public Optional<Customer> findById(Long id) throws Exception {
         try{
             return customerRepository.findById(id);
         }catch (Exception e){

@@ -3,6 +3,7 @@ package co.develhope.librarymanagement.entities.inventory;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 
 /**
  * Store è un punto vendita preciso.
@@ -17,18 +18,23 @@ public class Store extends PlaceOfWork {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
     public Store(){}
+    public Store(String name, String city, String address, LocalTime openingTime, LocalTime closingTime, Long id, Warehouse warehouse) {
+        super(name, city, address, openingTime, closingTime);
+        this.id = id;
+        this.warehouse = warehouse;
+    }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

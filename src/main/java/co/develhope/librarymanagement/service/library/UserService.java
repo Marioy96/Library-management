@@ -23,7 +23,7 @@ public class UserService {
        }
     }
 
-    public Optional<User> findUserById(Integer id) throws Exception {
+    public Optional<User> findUserById(Long id) throws Exception {
        try {
            return userRepository.findById(id);
        }catch (Exception e){
@@ -48,7 +48,7 @@ public class UserService {
        }
     }
 
-    public String deleteUserById(Integer id) throws Exception {
+    public String deleteUserById(Long id) throws Exception {
         try {
             userRepository.deleteById(id);
             return String.format("User whit id %d as deleted ", id);
@@ -58,7 +58,7 @@ public class UserService {
 
     }
 
-    public User updateUser(User user,Integer id) throws Exception{
+    public User updateUser(User user,Long id) throws Exception{
         if(!userRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }

@@ -18,7 +18,7 @@ public class StoreService {
     @Autowired
     private WarehouseService warehouseService;
 
-    public Store create(Store store, Integer id) throws Exception {
+    public Store create(Store store, Long id) throws Exception {
         try{
             Optional<Warehouse> warehouse = warehouseService.getSingle(id);
             if(warehouse.isPresent()){
@@ -27,11 +27,12 @@ public class StoreService {
             }
             return store;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("Incorrect input");
         }
     }
 
-    public Store update(Integer id, Store store) throws Exception {
+    public Store update(Long id, Store store) throws Exception {
         if(!storeRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
@@ -47,10 +48,11 @@ public class StoreService {
         return stores;
     }
 
-    public Optional<Store> findStoreById(Integer storeId) throws Exception {
+    public Optional<Store> findStoreById(Long storeId) throws Exception {
         try{
              return storeRepository.findById(storeId);
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Store id not found");
         }
     }
@@ -60,15 +62,17 @@ public class StoreService {
             storeRepository.deleteAll();
             return "All stores are deleted";
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Can't delete all stores from db");
         }
     }
 
-    public String deleteSingle(Integer id) throws Exception {
+    public String deleteSingle(Long id) throws Exception {
         try {
             storeRepository.deleteById(id);
             return String.format("Store with id %d as delete", id);
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Id not found");
         }
     }

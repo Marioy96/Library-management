@@ -6,6 +6,7 @@ import co.develhope.librarymanagement.entities.inventory.Stocktaking;
 import co.develhope.librarymanagement.entities.inventory.Store;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Warehouse extends PlaceOfWork {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @OneToMany(mappedBy = "warehouse")
     private List<Stocktaking> stocktaking;
@@ -32,11 +33,18 @@ public class Warehouse extends PlaceOfWork {
 
     public Warehouse(){}
 
-    public int getId() {
+    public Warehouse(String name, String city, String address, LocalTime openingTime, LocalTime closingTime, Long id, List<Stocktaking> stocktaking, Set<Store> stores) {
+        super(name, city, address, openingTime, closingTime);
+        this.id = id;
+        this.stocktaking = stocktaking;
+        this.stores = stores;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

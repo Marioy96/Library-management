@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.inventory;
 
 
 import co.develhope.librarymanagement.entities.inventory.Employee;
@@ -32,7 +32,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployeeById")
-    public ResponseEntity getEmployeeById(Integer id){
+    public ResponseEntity getEmployeeById(@RequestParam Long id){
         try{
             logger.info("Getting employee by id");
             return ResponseEntity.status(HttpStatus.OK).body(employeeService.getEmployeeById(id));
@@ -65,7 +65,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/updateEmployee")
-    public ResponseEntity updateEmployee(@RequestBody Employee employee, @RequestParam Integer id) {
+    public ResponseEntity updateEmployee(@RequestBody Employee employee, @RequestParam Long id) {
         try{
             logger.info("Update a employee");
             return  ResponseEntity.status(HttpStatus.OK).body(employeeService.updateEmployee(employee,id));
@@ -87,7 +87,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/deleteById")
-    public ResponseEntity deleteById(Integer id){
+    public ResponseEntity deleteById(Long id){
         try {
             logger.info("Delete employee by id");
             return ResponseEntity.status(HttpStatus.OK).body(employeeService.deleteEmployeeById(id));

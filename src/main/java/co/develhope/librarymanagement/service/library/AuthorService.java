@@ -32,7 +32,7 @@ public class AuthorService {
          }
     }
 
-    public Optional<Author> findAuthorById(Integer id) throws Exception {
+    public Optional<Author> findAuthorById(Long id) throws Exception {
         try {
             return authorRepository.findById(id);
         }catch (Exception e){
@@ -51,7 +51,7 @@ public class AuthorService {
 
     }
 
-    public String deleteAuthorById(@NotNull Integer id) throws Exception {
+    public String deleteAuthorById(Long id) throws Exception {
         try{
             authorRepository.deleteById(id);
             return String.format("Author whit id %d as deleted ", id);
@@ -62,7 +62,7 @@ public class AuthorService {
 
     }
 
-    public Author updateAuthor(Integer id, @NotNull Author author) throws Exception {
+    public Author updateAuthor(Long id, @NotNull Author author) throws Exception {
         if(!authorRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }

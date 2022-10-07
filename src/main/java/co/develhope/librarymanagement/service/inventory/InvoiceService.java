@@ -29,7 +29,7 @@ public class InvoiceService {
     @Autowired
     private BookService bookService;
 
-    public Invoice create(Invoice invoice,Integer customerId,Integer bookId,Integer userId) throws Exception {
+    public Invoice create(Invoice invoice,Long customerId,Long bookId,Long userId) throws Exception {
         try{
             Optional<Customer> customer = customerService.findById(customerId);
             Optional<Book> book = bookService.findBookById(bookId);
@@ -43,11 +43,12 @@ public class InvoiceService {
             }
             return invoice;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("Incorrect input");
         }
     }
 
-    public Invoice update(Integer id, Invoice invoice) throws Exception {
+    public Invoice update(Long id, Invoice invoice) throws Exception {
         if(!invoiceRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
@@ -63,10 +64,11 @@ public class InvoiceService {
       return invoices;
     }
 
-    public Optional<Invoice> getSingle(Integer id) throws Exception {
+    public Optional<Invoice> getSingle(Long id) throws Exception {
        try{
            return invoiceRepository.findById(id);
        }catch (Exception e){
+           e.printStackTrace();
         throw new Exception("Store id not found");
        }
     }
@@ -80,11 +82,12 @@ public class InvoiceService {
         }
     }
 
-    public String deleteSingle(Integer id) throws Exception {
+    public String deleteSingle(Long id) throws Exception {
         try {
             invoiceRepository.deleteById(id);
             return String.format("Invoice with id %d as delete", id);
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Id not found");
         }
     }

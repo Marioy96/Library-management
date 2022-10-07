@@ -28,7 +28,7 @@ public class BookService {
         return allBooksFromDb;
     }
 
-    public Book insertNewBook(Book newBook,Integer id) throws Exception {
+    public Book insertNewBook(Book newBook,Long id) throws Exception {
         try{
             Optional<Author> author = authorService.findAuthorById(id);
             if(author.isPresent()){
@@ -52,7 +52,7 @@ public class BookService {
 
     }
 
-    public Book updateBook(Book book,Integer id) throws Exception {
+    public Book updateBook(Book book,Long id) throws Exception {
         if(!bookRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
@@ -60,7 +60,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public String deleteBookById(@NotNull Integer id) throws Exception {
+    public String deleteBookById(Long id) throws Exception {
        try {
            bookRepository.deleteById(id);
            return String.format("Book with id %d as delete", id);
@@ -69,7 +69,7 @@ public class BookService {
        }
     }
 
-    public Optional<Book> findBookById(Integer id) throws Exception{
+    public Optional<Book> findBookById(Long id) throws Exception{
         try{
             return bookRepository.findById(id);
         }catch (Exception e){

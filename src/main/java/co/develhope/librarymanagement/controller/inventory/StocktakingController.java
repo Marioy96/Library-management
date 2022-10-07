@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.inventory;
 
 import co.develhope.librarymanagement.entities.inventory.Stocktaking;
 import co.develhope.librarymanagement.service.inventory.StocktakingService;
@@ -19,7 +19,8 @@ public class StocktakingController {
     private static Logger logger = LoggerFactory.getLogger(StoreController.class);
 
     @PostMapping("/create")
-    public ResponseEntity createStock(@RequestBody Stocktaking stocktaking,Integer bookId, Integer warehouseId){
+    public ResponseEntity createStock(@RequestBody Stocktaking stocktaking,
+                                      @RequestParam Long bookId,@RequestParam Long warehouseId){
         try {
             logger.info("Insert a stock");
             return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.createStock(stocktaking,bookId,warehouseId));
@@ -39,7 +40,7 @@ public class StocktakingController {
         }
     }
     @GetMapping("/getById/{id}")
-    public ResponseEntity getStockById(@PathVariable Integer id){
+    public ResponseEntity getStockById(@PathVariable Long id){
         try {
             logger.info("Get Stock by Id");
             return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.findStocktakingById(id));
@@ -49,7 +50,7 @@ public class StocktakingController {
         }
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity updateStock(Integer id, Stocktaking stocktaking) {
+    public ResponseEntity updateStock(@PathVariable Long id, @RequestParam Stocktaking stocktaking) {
         try {
             logger.info("Update Stock");
             return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.updateStocktaking(id, stocktaking));
@@ -59,7 +60,7 @@ public class StocktakingController {
         }
     }
     @DeleteMapping("/deleteStockById/{id}")
-    public ResponseEntity deleteStockById(@PathVariable Integer id) {
+    public ResponseEntity deleteStockById(@PathVariable Long id) {
         try{
             logger.info("Delete a stock by id");
             return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.deleteSingleStock(id));

@@ -13,7 +13,7 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     private LocalDate emissionDate;
 
@@ -34,7 +34,7 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(Integer id, LocalDate emissionDate, Customer customer, User user, Book book, double totalPrice) {
+    public Invoice(Long id, LocalDate emissionDate, Customer customer, User user, Book book, double totalPrice) {
         this.id = id;
         this.emissionDate = emissionDate;
         this.customer = customer;
@@ -59,11 +59,11 @@ public class Invoice {
         this.totalPrice = totalPrice;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

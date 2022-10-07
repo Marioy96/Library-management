@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.inventory;
 
 import co.develhope.librarymanagement.entities.inventory.Store;
 import co.develhope.librarymanagement.service.inventory.StoreService;
@@ -19,7 +19,7 @@ public class StoreController {
     private static Logger logger = LoggerFactory.getLogger(StoreController.class);
 
     @PostMapping("/create")
-    public ResponseEntity createStore(@RequestBody Store store, @RequestParam Integer id){
+    public ResponseEntity createStore(@RequestBody Store store, @RequestParam Long id){
         try{
             logger.info("Create stroe");
             return ResponseEntity.status(HttpStatus.OK).body(storeService.create(store,id));
@@ -41,7 +41,7 @@ public class StoreController {
     }
 
     @GetMapping("/getSingle")
-    public ResponseEntity getStoreByID(@RequestParam Integer id){
+    public ResponseEntity getStoreByID(@RequestParam Long id){
         try {
             logger.info("Get store by Id");
             return ResponseEntity.status(HttpStatus.OK).body(storeService.findStoreById(id));
@@ -52,7 +52,7 @@ public class StoreController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity updateStore(@RequestBody Store store, @PathVariable Integer id){
+    public ResponseEntity updateStore(@RequestBody Store store, @PathVariable Long id){
         try{
             logger.info("Update Store");
             return ResponseEntity.status(HttpStatus.OK).body(storeService.update(id,store));
@@ -74,7 +74,7 @@ public class StoreController {
     }
 
     @DeleteMapping("/deleteBYId/{id}")
-    public ResponseEntity deleteById(@PathVariable Integer id){
+    public ResponseEntity deleteById(@PathVariable Long id){
         try {
             logger.info("Deleting Store by Id");
             return ResponseEntity.status(HttpStatus.OK).body(storeService.deleteSingle(id));

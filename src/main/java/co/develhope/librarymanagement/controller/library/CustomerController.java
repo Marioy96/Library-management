@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.library;
 
 import co.develhope.librarymanagement.entities.library.Customer;
 import co.develhope.librarymanagement.service.library.CustomerService;
@@ -31,7 +31,7 @@ public class CustomerController {
     }
 
     @GetMapping("/getById")
-    public ResponseEntity getById(@RequestParam Integer id){
+    public ResponseEntity getById(@RequestParam Long id){
       try {
           logger.info("Getting customer by Id");
           return ResponseEntity.status(HttpStatus.OK).body(customerService.findById(id));
@@ -53,7 +53,7 @@ public class CustomerController {
     }
 
     @PutMapping("/updateCustomer")
-    public ResponseEntity updateCustomer(@RequestBody Customer customer,@RequestParam Integer id){
+    public ResponseEntity updateCustomer(@RequestBody Customer customer,@RequestParam Long id){
         try{
             logger.info("Update a customer");
             return  ResponseEntity.status(HttpStatus.OK).body(customerService.updateCustomer(customer,id));
@@ -75,7 +75,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/deleteById")
-    public ResponseEntity  deleteCustomerById(Integer id){
+    public ResponseEntity  deleteCustomerById(@RequestParam Long id){
         try{
             logger.info("Delete a customer by id");
             return ResponseEntity.status(HttpStatus.OK).body(customerService.deleteCustomerById(id));

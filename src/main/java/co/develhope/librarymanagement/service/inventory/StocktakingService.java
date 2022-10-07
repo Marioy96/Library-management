@@ -21,7 +21,7 @@ public class StocktakingService {
     @Autowired
     private WarehouseService warehouseService;
 
-    public Stocktaking createStock(Stocktaking stocktaking,Integer bookId,Integer warehouseId) throws Exception {
+    public Stocktaking createStock(Stocktaking stocktaking,Long bookId,Long warehouseId) throws Exception {
         try {
             Optional<Book> book = bookService.findBookById(bookId);
             Optional<Warehouse> warehouse = warehouseService.getSingle(warehouseId);
@@ -32,6 +32,7 @@ public class StocktakingService {
             }
             return stocktaking;
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Incorrect input");
         }
     }
@@ -44,15 +45,16 @@ public class StocktakingService {
         return allStock;
     }
 
-    public Optional<Stocktaking> findStocktakingById(Integer id) throws Exception {
+    public Optional<Stocktaking> findStocktakingById(Long id) throws Exception {
         try{
             return stocktakingRepository.findById(id);
         }catch (Exception e){
-        throw new Exception("Id not found");
+            e.printStackTrace();
+            throw new Exception("Id not found");
     }
     }
 
-    public Stocktaking updateStocktaking(Integer id,Stocktaking stocktaking) throws Exception {
+    public Stocktaking updateStocktaking(Long id,Stocktaking stocktaking) throws Exception {
         if(!stocktakingRepository.existsById(id)){
             throw new Exception("Id doesn't exist");
         }
@@ -65,16 +67,18 @@ public class StocktakingService {
             stocktakingRepository.deleteAll();
             return "All stocktaking are deleted";
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Can't delete all stock from db");
         }
 
     }
 
-    public String deleteSingleStock(Integer id) throws Exception {
+    public String deleteSingleStock(Long id) throws Exception {
         try {
             stocktakingRepository.deleteById(id);
             return String.format("Stocktaking with id %d as delete", id);
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception("Stocktaking id not found");
         }
     }

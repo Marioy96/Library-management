@@ -426,8 +426,8 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.stores' doesn't
 2022-10-05 12:51:12,065 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-05 12:51:12,065 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
 2022-10-05 12:51:12,066 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2022-10-05 12:51:12,165 INFO co.develhope.librarymanagement.controller.WarehouseController [http-nio-8080-exec-2] Create Warehouse
-2022-10-05 12:51:20,396 INFO co.develhope.librarymanagement.controller.WarehouseController [http-nio-8080-exec-3] Create Warehouse
+2022-10-05 12:51:12,165 INFO co.develhope.librarymanagement.controller.inventory.WarehouseController [http-nio-8080-exec-2] Create Warehouse
+2022-10-05 12:51:20,396 INFO co.develhope.librarymanagement.controller.inventory.WarehouseController [http-nio-8080-exec-3] Create Warehouse
 2022-10-05 12:51:54,409 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-10-05 12:51:54,409 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2022-10-05 12:51:54,829 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...

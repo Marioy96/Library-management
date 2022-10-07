@@ -11,6 +11,10 @@ import java.util.Set;
 @Table(name = "Users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO )
+    private Long id;
+
     @Column(unique = true)
     private String username;
     private String password;
@@ -29,11 +33,6 @@ public class User {
     @Column(unique = true)
     private String email;
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
-    private Integer id;
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private Set<Book> books = new LinkedHashSet<>();
@@ -42,7 +41,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String name, String surname, String dateOfBirth, String city, String fiscalCode, String telephoneNumber, String email, Integer id, Set<Book> books) {
+    public User(String username, String password, String name, String surname, String dateOfBirth, String city, String fiscalCode, String telephoneNumber, String email, Long id, Set<Book> books) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -136,11 +135,11 @@ public class User {
         this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

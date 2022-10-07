@@ -13,7 +13,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String title;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
@@ -36,7 +36,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String title, Author author, String plot, int pages, double price, String ISBN, int numberOfEdition, LocalDate publicationDate, String bookGenre, boolean availability) {
+    public Book(Long id, String title, Author author, String plot, int pages, double price, String ISBN, int numberOfEdition, LocalDate publicationDate, String bookGenre, boolean availability) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -50,11 +50,11 @@ public class Book {
         this.availability = availability;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

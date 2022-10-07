@@ -1,4 +1,4 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.library;
 
 import co.develhope.librarymanagement.entities.library.User;
 import co.develhope.librarymanagement.service.library.UserService;
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/getUserById")
-    public ResponseEntity getUserById(@RequestParam int id){
+    public ResponseEntity getUserById(@RequestParam Long id){
         try{
             logger.info("Get User by Id");
             return ResponseEntity.status(HttpStatus.OK).body(userService.findUserById(id));
@@ -55,7 +55,7 @@ public class UserController {
 
 
     @PutMapping("/updateUser")
-    public @ResponseBody ResponseEntity updateUser(@RequestBody @NotNull User user, @RequestParam int id) {
+    public @ResponseBody ResponseEntity updateUser(@RequestBody @NotNull User user, @RequestParam Long id) {
         try{
             logger.info("Update a user");
             return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(user,id));
@@ -77,7 +77,7 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteUserById")
-    public ResponseEntity deleteUserById(@RequestParam int id) {
+    public ResponseEntity deleteUserById(@RequestParam Long id) {
         try{
             logger.info("Delete a user by id");
             return ResponseEntity.status(HttpStatus.OK).body(userService.deleteUserById(id));

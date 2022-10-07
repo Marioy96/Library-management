@@ -13,7 +13,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     private String name;
     private String surname;
@@ -28,7 +28,7 @@ public class Author {
     public Author() {
     }
 
-    public Author(Integer id, String name, String surname, LocalDate dateOfBirth, Integer numberOfBookWrited, Set<Book> books) {
+    public Author(Long id, String name, String surname, LocalDate dateOfBirth, Integer numberOfBookWrited, Set<Book> books) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -45,11 +45,11 @@ public class Author {
         this.numberOfBookWrited = numberOfBookWrited;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

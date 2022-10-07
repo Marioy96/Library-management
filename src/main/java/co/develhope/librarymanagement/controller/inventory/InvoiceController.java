@@ -1,7 +1,6 @@
-package co.develhope.librarymanagement.controller;
+package co.develhope.librarymanagement.controller.inventory;
 
 import co.develhope.librarymanagement.entities.inventory.Invoice;
-import co.develhope.librarymanagement.entities.inventory.Store;
 import co.develhope.librarymanagement.service.inventory.InvoiceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +19,8 @@ public class InvoiceController {
     private static Logger logger = LoggerFactory.getLogger(InvoiceController.class);
 
     @PostMapping("/create")
-    public ResponseEntity createInvoice(@RequestBody Invoice invoice, @RequestParam Integer bookId,
-                                        @RequestParam Integer userId,@RequestParam Integer customerId){
+    public ResponseEntity createInvoice(@RequestBody Invoice invoice, @RequestParam Long bookId,
+                                        @RequestParam Long userId,@RequestParam Long customerId){
         try {
             logger.info("Create Invoice");
             return ResponseEntity.status(HttpStatus.OK).body(invoiceService.create(invoice,customerId,bookId,userId));
@@ -44,7 +43,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/getSingle/{id}")
-    public ResponseEntity getInvoiceByID(@PathVariable Integer id){
+    public ResponseEntity getInvoiceByID(@PathVariable Long id){
         try {
             logger.info("Get invoice by Id");
             return ResponseEntity.status(HttpStatus.OK).body(invoiceService.getSingle(id));
@@ -55,7 +54,7 @@ public class InvoiceController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity updateInvoice(@RequestBody Invoice invoice, @PathVariable Integer id){
+    public ResponseEntity updateInvoice(@RequestBody Invoice invoice, @PathVariable Long id){
         try{
             logger.info("Update Invoice");
             return ResponseEntity.status(HttpStatus.OK).body(invoiceService.update(id,invoice));
@@ -77,7 +76,7 @@ public class InvoiceController {
     }
 
     @DeleteMapping("/deleteBYId/{id}")
-    public ResponseEntity deleteById(@PathVariable Integer id){
+    public ResponseEntity deleteById(@PathVariable Long id){
         try {
             logger.info("Deleting invoice by Id");
             return ResponseEntity.status(HttpStatus.OK).body(invoiceService.deleteSingle(id));

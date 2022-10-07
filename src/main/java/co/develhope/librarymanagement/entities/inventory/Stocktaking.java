@@ -16,7 +16,7 @@ public class Stocktaking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     private int numberOfCopies;
 
@@ -38,18 +38,18 @@ public class Stocktaking {
 
     public Stocktaking(){}
 
-    public Stocktaking(int id, int numberOfCopies, Book book, Warehouse warehouse) {
+    public Stocktaking(Long id, int numberOfCopies, Book book, Warehouse warehouse) {
         this.id = id;
         this.numberOfCopies = numberOfCopies;
         this.book = book;
         this.warehouse = warehouse;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

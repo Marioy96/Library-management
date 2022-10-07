@@ -10,7 +10,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
     private String name;
     private String surname;
     private String telephoneNumber;
@@ -19,7 +19,7 @@ public class Customer {
     private Boolean turnAvailability;
     private LocalDate absences;
 
-    public Customer(int id, String name, String surname, String telephoneNumber, String email, Boolean turnAvailability, LocalDate absences) {
+    public Customer(Long id, String name, String surname, String telephoneNumber, String email, Boolean turnAvailability, LocalDate absences) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -80,11 +80,11 @@ public class Customer {
         this.absences = absences;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
