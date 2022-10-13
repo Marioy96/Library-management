@@ -12,7 +12,7 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String title;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -48,6 +48,14 @@ public class Book {
         this.publicationDate = publicationDate;
         this.bookGenre = bookGenre;
         this.availability = availability;
+    }
+
+    public Set<Stocktaking> getStocktakings() {
+        return stocktakings;
+    }
+
+    public void setStocktakings(Set<Stocktaking> stocktakings) {
+        this.stocktakings = stocktakings;
     }
 
     public Long getId() {

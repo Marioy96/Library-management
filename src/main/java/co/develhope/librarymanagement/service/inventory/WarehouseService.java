@@ -40,7 +40,7 @@ public class WarehouseService {
 
     public Warehouse create(Warehouse warehouse) throws Exception {
         try {
-              return  warehouseRepository.save(warehouse);
+            return  warehouseRepository.save(warehouse);
         } catch (Exception e){
             throw new Exception("Incorrect input");
         }
@@ -68,7 +68,7 @@ public class WarehouseService {
             warehouseRepository.deleteAll();
             return "All warehouse are deleted";
         }catch (Exception e){
-        throw new Exception("Can't delete all werehouse from db");
+        throw new Exception("Can't delete all warehouse from db");
         }
     }
 

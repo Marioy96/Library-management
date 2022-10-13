@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class Store extends PlaceOfWork {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
     @ManyToOne

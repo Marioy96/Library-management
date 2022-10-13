@@ -83,5 +83,14 @@ public class StocktakingService {
         }
     }
 
+    public Stocktaking addCopy(Long stockId,Long bookId,Long warehouseId,int copyToAdd) throws Exception {
+        Optional<Stocktaking> stocktakingToBeUpdate = stocktakingRepository.findById(stockId);
+        if(stocktakingToBeUpdate.isEmpty()) throw new Exception("Stocktaking not found");
+        warehouseService.getSingle(warehouseId).get().getStocktackingByBookId(bookId)
+               .setNumberOfCopies(stocktakingToBeUpdate.get().getNumberOfCopies() + copyToAdd);
+
+        return stocktakingToBeUpdate.get();
+    }
+
 
 }

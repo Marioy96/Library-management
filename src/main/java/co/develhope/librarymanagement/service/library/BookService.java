@@ -1,16 +1,18 @@
 package co.develhope.librarymanagement.service.library;
 
+import co.develhope.librarymanagement.entities.inventory.Stocktaking;
 import co.develhope.librarymanagement.entities.library.Author;
 import co.develhope.librarymanagement.entities.library.Book;
 import co.develhope.librarymanagement.repository.library.BookRepository;
-import co.develhope.librarymanagement.service.library.AuthorService;
-import org.jetbrains.annotations.NotNull;
+import co.develhope.librarymanagement.service.inventory.StocktakingService;
+import co.develhope.librarymanagement.service.inventory.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class BookService {
@@ -19,6 +21,8 @@ public class BookService {
     private BookRepository bookRepository;
     @Autowired
     private AuthorService authorService;
+
+
 
     public List<Book> findAllBook() throws Exception {
         List<Book> allBooksFromDb = bookRepository.findAll();
@@ -33,6 +37,7 @@ public class BookService {
             Optional<Author> author = authorService.findAuthorById(id);
             if(author.isPresent()){
                 newBook.setAuthor(author.get());
+                newBook.setId(newBook.getId());
                 bookRepository.save(newBook);
             }
             return newBook;

@@ -25,11 +25,11 @@ public class StoreService {
                 store.setWarehouse(warehouse.get());
                 storeRepository.save(store);
             }
-            return store;
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Incorrect input");
         }
+        return store;
     }
 
     public Store update(Long id, Store store) throws Exception {

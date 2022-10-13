@@ -22,7 +22,7 @@ import java.util.Set;
 public class Warehouse extends PlaceOfWork {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToMany(mappedBy = "warehouse")
@@ -62,6 +62,16 @@ public class Warehouse extends PlaceOfWork {
 
     public void setStores(Set<Store> stores) {
         this.stores = stores;
+    }
+
+    public Stocktaking getStocktackingByBookId(Long bookId){
+        Stocktaking stocktakings = null;
+        for (Stocktaking stock: stocktaking) {
+            if(stock.getBook().getId().equals(bookId)){
+                stocktakings = stock;
+            }
+        }
+        return stocktakings;
     }
 }
 

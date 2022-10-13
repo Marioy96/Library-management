@@ -59,6 +59,18 @@ public class StocktakingController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @PatchMapping("/addCopy")
+    public ResponseEntity updateCopy(@RequestParam Long stockId,@RequestParam Long bookId,
+                                     @RequestParam Long warehouseId,@RequestParam int copyToadd){
+        try {
+            logger.info("Update number of copy");
+            return ResponseEntity.status(HttpStatus.OK).body(stocktakingService.addCopy(stockId,bookId,warehouseId,copyToadd));
+        }catch (Exception e) {
+            logger.error(e.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
     @DeleteMapping("/deleteStockById/{id}")
     public ResponseEntity deleteStockById(@PathVariable Long id) {
         try{
