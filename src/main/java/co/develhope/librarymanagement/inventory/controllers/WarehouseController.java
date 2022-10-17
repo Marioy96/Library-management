@@ -20,12 +20,6 @@ public class WarehouseController {
     @Autowired
     private WarehouseService warehouseService;
 
-    @Autowired
-    private StoreService storeService;
-
-    @Autowired
-    private StocktakingService stocktakingService;
-
     private static final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 
     @PostMapping("/createWarehouse")

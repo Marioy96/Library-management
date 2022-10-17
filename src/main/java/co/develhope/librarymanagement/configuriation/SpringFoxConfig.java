@@ -18,7 +18,7 @@ import java.util.List;
 @Configuration
 public class SpringFoxConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(SpringFoxConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpringFoxConfig.class);
 
     @Bean
     public Docket api() {
