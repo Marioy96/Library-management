@@ -319,7 +319,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.books' doesn't 
 2022-09-22 17:51:28,239 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-22 17:51:28,239 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
 2022-09-22 17:51:28,240 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2022-09-22 17:51:28,305 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-2] Added a new Author
+2022-09-22 17:51:28,305 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-2] Added a new Author
 2022-09-22 17:58:25,876 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-09-22 17:58:25,876 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2022-09-22 17:58:26,001 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
@@ -402,8 +402,8 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.books' doesn't 
 2022-09-22 18:00:53,120 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-22 18:00:53,121 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2022-09-22 18:00:53,122 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2022-09-22 18:00:53,184 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-1] Added a new Author
-2022-09-22 18:02:15,068 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-5] Update a Author
+2022-09-22 18:00:53,184 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-1] Added a new Author
+2022-09-22 18:02:15,068 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-5] Update a Author
 2022-09-22 18:02:26,267 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-09-22 18:02:26,268 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2022-09-22 18:02:26,393 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
@@ -486,10 +486,10 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.books' doesn't 
 2022-09-22 18:14:55,620 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-22 18:14:55,620 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2022-09-22 18:14:55,621 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2022-09-22 18:14:55,680 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-1] Added a new Author
-2022-09-22 18:15:00,220 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-3] Update a Author
-2022-09-22 18:15:04,182 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-4] Getting author by Id
-2022-09-22 18:15:27,437 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-6] Delete All author
+2022-09-22 18:14:55,680 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-1] Added a new Author
+2022-09-22 18:15:00,220 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-3] Update a Author
+2022-09-22 18:15:04,182 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-4] Getting author by Id
+2022-09-22 18:15:27,437 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-6] Delete All author
 2022-09-22 18:15:49,768 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-09-22 18:15:49,769 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2022-09-22 18:15:49,895 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
@@ -572,12 +572,12 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.books' doesn't 
 2022-09-22 19:05:11,627 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-22 19:05:11,628 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2022-09-22 19:05:11,629 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2022-09-22 19:05:11,694 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-1] Added a new Author
-2022-09-22 19:05:49,094 INFO co.develhope.librarymanagement.controller.library.BookController [http-nio-8080-exec-4] Insert a new book
-2022-09-22 19:06:41,920 INFO co.develhope.librarymanagement.controller.library.BookController [http-nio-8080-exec-5] Update a book
-2022-09-22 19:06:41,978 ERROR co.develhope.librarymanagement.controller.library.BookController [http-nio-8080-exec-5] java.lang.Exception: Id doesn't exist
-2022-09-22 19:06:51,730 INFO co.develhope.librarymanagement.controller.library.BookController [http-nio-8080-exec-7] Update a book
-2022-09-22 19:07:22,616 INFO co.develhope.librarymanagement.controller.library.BookController [http-nio-8080-exec-9] Delete all book
+2022-09-22 19:05:11,694 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-1] Added a new Author
+2022-09-22 19:05:49,094 INFO co.develhope.librarymanagement.library.controllers.BookController [http-nio-8080-exec-4] Insert a new book
+2022-09-22 19:06:41,920 INFO co.develhope.librarymanagement.library.controllers.BookController [http-nio-8080-exec-5] Update a book
+2022-09-22 19:06:41,978 ERROR co.develhope.librarymanagement.library.controllers.BookController [http-nio-8080-exec-5] java.lang.Exception: Id doesn't exist
+2022-09-22 19:06:51,730 INFO co.develhope.librarymanagement.library.controllers.BookController [http-nio-8080-exec-7] Update a book
+2022-09-22 19:07:22,616 INFO co.develhope.librarymanagement.library.controllers.BookController [http-nio-8080-exec-9] Delete all book
 2022-09-22 19:10:47,901 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-09-22 19:10:47,901 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2022-09-22 19:10:48,085 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...

@@ -43,10 +43,6 @@ public class SpringFoxConfig {
                 .paths(PathSelectors.any())
                 .build();
 
-
-
-
-
     }
     private ApiKey apiKey() {
         //logger.info("Private method 'apiKey' method called at "+ SpringFoxConfig.class +" at line#" + lineGetter);

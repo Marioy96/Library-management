@@ -126,9 +126,9 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'bookdatabase.books' doesn't 
 2022-10-01 11:32:30,974 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-01 11:32:30,974 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2022-10-01 11:32:30,975 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2022-10-01 11:32:31,026 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-1] Added a new Author
-2022-10-01 11:32:31,041 ERROR co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-1] java.lang.Exception: Incorrect input
-2022-10-01 11:33:17,246 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-4] Added a new Author
-2022-10-01 11:33:17,248 ERROR co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-4] java.lang.Exception: Incorrect input
-2022-10-01 11:33:22,245 INFO co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-6] Added a new Author
-2022-10-01 11:33:22,247 ERROR co.develhope.librarymanagement.controller.library.AuthorController [http-nio-8080-exec-6] java.lang.Exception: Incorrect input
+2022-10-01 11:32:31,026 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-1] Added a new Author
+2022-10-01 11:32:31,041 ERROR co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-1] java.lang.Exception: Incorrect input
+2022-10-01 11:33:17,246 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-4] Added a new Author
+2022-10-01 11:33:17,248 ERROR co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-4] java.lang.Exception: Incorrect input
+2022-10-01 11:33:22,245 INFO co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-6] Added a new Author
+2022-10-01 11:33:22,247 ERROR co.develhope.librarymanagement.library.controllers.AuthorController [http-nio-8080-exec-6] java.lang.Exception: Incorrect input
