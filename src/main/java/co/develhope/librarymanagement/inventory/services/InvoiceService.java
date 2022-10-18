@@ -2,7 +2,7 @@ package co.develhope.librarymanagement.inventory.services;
 
 import co.develhope.librarymanagement.inventory.entities.Invoice;
 import co.develhope.librarymanagement.library.entities.Book;
-import co.develhope.librarymanagement.library.entities.User;
+import co.develhope.librarymanagement.model.entities.User;
 import co.develhope.librarymanagement.inventory.repositories.InvoiceRepository;
 import co.develhope.librarymanagement.library.services.BookService;
 import co.develhope.librarymanagement.library.services.UserService;

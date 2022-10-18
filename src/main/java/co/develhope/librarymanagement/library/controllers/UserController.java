@@ -1,6 +1,6 @@
 package co.develhope.librarymanagement.library.controllers;
 
-import co.develhope.librarymanagement.library.entities.User;
+import co.develhope.librarymanagement.model.entities.User;
 import co.develhope.librarymanagement.library.services.UserService;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

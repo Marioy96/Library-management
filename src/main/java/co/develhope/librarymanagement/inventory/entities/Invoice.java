@@ -1,7 +1,7 @@
 package co.develhope.librarymanagement.inventory.entities;
 
 import co.develhope.librarymanagement.library.entities.Book;
-import co.develhope.librarymanagement.library.entities.User;
+import co.develhope.librarymanagement.model.entities.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
