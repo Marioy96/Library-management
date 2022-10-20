@@ -1,8 +1,11 @@
 package co.develhope.librarymanagement.inventory.entities;
 
+import co.develhope.librarymanagement.model.entities.Role;
+
 import javax.persistence.*;
 import java.time.LocalDate;
-
+import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -34,12 +37,26 @@ public class Employee {
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
+    private String activationCode;
+    private LocalDateTime jwtCreatedOn;
+    private boolean isActive;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES",
+            joinColumns = {
+                    @JoinColumn(name = "EMPLOYEE_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID") })
+    private Set<Role> roles;
+
     public Employee() {
     }
 
-    public Employee(Long id, String name, String surname, String address, String telephoneNumber,
-                    String email, String fiscalCode, LocalDate dateOfBirth, LocalDate dateOfHiring,
-                    String employeeCode, Store store, Warehouse warehouse) {
+    public Employee(Long id, String name, String surname, String address, String telephoneNumber, String email,
+                    String fiscalCode, LocalDate dateOfBirth, LocalDate dateOfHiring, String employeeCode,
+                    Store store, Warehouse warehouse, String activationCode, LocalDateTime jwtCreatedOn,
+                    boolean isActive, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -52,6 +69,10 @@ public class Employee {
         this.employeeCode = employeeCode;
         this.store = store;
         this.warehouse = warehouse;
+        this.activationCode = activationCode;
+        this.jwtCreatedOn = jwtCreatedOn;
+        this.isActive = isActive;
+        this.roles = roles;
     }
 
     public String getName() {
@@ -125,6 +146,37 @@ public class Employee {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public LocalDateTime getJwtCreatedOn() {
+        return jwtCreatedOn;
+    }
+
+    public void setJwtCreatedOn(LocalDateTime jwtCreatedOn) {
+        this.jwtCreatedOn = jwtCreatedOn;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
 

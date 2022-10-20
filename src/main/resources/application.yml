@@ -8,7 +8,26 @@ spring:
         password: Mospwn13295X
         driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
-        database : mysql
-        show_sql : true
+        database: mysql
+        show-sql: true
         hibernate:
             ddl-auto: update
+    h2:
+        database: h2
+        console:
+            enabled: true
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: nefaryan.devmail@gmail.com
+        password: bqpclgkdxgnwsjwa
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+
+    jackson:
+        serialization:
+            fail-on-empty-beans: false
