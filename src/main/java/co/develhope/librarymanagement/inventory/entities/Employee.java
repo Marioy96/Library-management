@@ -23,6 +23,8 @@ public class Employee {
     private String telephoneNumber;
     @Column(unique = true)
     private String email;
+
+    private String password;
     @Column(unique = true)
     private String fiscalCode;
     private LocalDate dateOfBirth;
@@ -54,15 +56,15 @@ public class Employee {
     }
 
     public Employee(Long id, String name, String surname, String address, String telephoneNumber, String email,
-                    String fiscalCode, LocalDate dateOfBirth, LocalDate dateOfHiring, String employeeCode,
-                    Store store, Warehouse warehouse, String activationCode, LocalDateTime jwtCreatedOn,
-                    boolean isActive, Set<Role> roles) {
+                    String password, String fiscalCode, LocalDate dateOfBirth, LocalDate dateOfHiring, String employeeCode, Store store,
+                    Warehouse warehouse, String activationCode, LocalDateTime jwtCreatedOn, boolean isActive, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
+        this.password = password;
         this.fiscalCode = fiscalCode;
         this.dateOfBirth = dateOfBirth;
         this.dateOfHiring = dateOfHiring;
@@ -150,37 +152,31 @@ public class Employee {
     public String getActivationCode() {
         return activationCode;
     }
-
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
-
     public LocalDateTime getJwtCreatedOn() {
         return jwtCreatedOn;
     }
-
     public void setJwtCreatedOn(LocalDateTime jwtCreatedOn) {
         this.jwtCreatedOn = jwtCreatedOn;
     }
-
     public boolean isActive() {
         return isActive;
     }
-
     public void setActive(boolean active) {
         isActive = active;
     }
-
     public Set<Role> getRoles() {
         return roles;
     }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-
-
-
-
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

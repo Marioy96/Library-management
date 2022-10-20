@@ -31,3 +31,8 @@ spring:
     jackson:
         serialization:
             fail-on-empty-beans: false
+
+JWT_TOKEN :  0813ec65-7824-4dbd-b13a-54bfbc99930b
+
+
+
